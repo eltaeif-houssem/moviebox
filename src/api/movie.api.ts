@@ -12,12 +12,12 @@ import {
 
 /**
  * @GET movie details
- * @param id: movie id
+ * @param movieId: movie id
  * @returns {AxiosResponse<IMovieDetails>} object
  */
 export const getMovieDtails = async (
-  id: number
-): Promise<AxiosResponse<IMovieDetails>> => axios.get(`/movie/${id}`);
+  movieId: number
+): Promise<AxiosResponse<IMovieDetails>> => axios.get(`/movie/${movieId}`);
 
 /**
  * @GET now playing movies
@@ -135,12 +135,14 @@ export const getTrendingMovies = async (
 
 /**
  * @GET movies by genre
- * @param genre: genre id
+ * @param genreId: genre id
  * @param page: number
  * @returns {AxiosResponse<IMovieList>} object
  */
 export const getMoviesByGenre = async (
-  genre: number,
+  genreId: number,
   page: number = 1
 ): Promise<AxiosResponse<IMovieList>> =>
-  axios.get(`/discover/movie?with_genres=${genre}&language=en-US&page=${page}`);
+  axios.get(
+    `/discover/movie?with_genres=${genreId}&language=en-US&page=${page}`
+  );
