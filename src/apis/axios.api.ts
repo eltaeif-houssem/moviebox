@@ -1,5 +1,5 @@
 import axios from "axios";
-import { TMDB_V3_API } from "../constants/apiUrls.constant";
+import { TMDB_V3_API } from "@constants/apiUrls.constant";
 
 const TMDB_ACCESS_TOKEN = import.meta.env.VITE_APP_TMDB_ACCESS_TOKEN;
 // create an axios instance for movie,tv and actors etc ...

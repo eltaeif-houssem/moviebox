@@ -6,8 +6,8 @@ import {
   IMovieImages,
   IMovieReviews,
   IMovieGenres,
-} from "../interface/movie.interface";
-import * as movieApi from "../api/movie.api";
+} from "../interfaces/movie.interface";
+import * as movieApi from "@apis/movie.api";
 
 class MovieService {
   async fetchMovieDetails(movieId: number): Promise<IMovieDetails> {

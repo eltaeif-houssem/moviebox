@@ -5,8 +5,8 @@ import {
   ITvImages,
   ITvReviews,
   ITvGenres,
-} from "../interface/tv.interface";
-import * as tvApi from "../api/tv.api";
+} from "../interfaces/tv.interface";
+import * as tvApi from "@apis/tv.api";
 
 class TvService {
   async fetchTvDetails(tvId: number): Promise<ITvDetails> {

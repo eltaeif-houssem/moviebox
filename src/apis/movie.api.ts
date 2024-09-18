@@ -8,7 +8,7 @@ import {
   IMovieImages,
   IMovieReviews,
   IMovieGenres,
-} from "../interface/movie.interface";
+} from "@interfaces/movie.interface";
 
 /**
  * @GET movie details

@@ -7,7 +7,7 @@ import {
   ITvImages,
   ITvReviews,
   ITvGenres,
-} from "../interface/tv.interface";
+} from "@interfaces/tv.interface";
 
 /**
  * @GET tv details
