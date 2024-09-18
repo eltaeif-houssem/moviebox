@@ -1,0 +1,32 @@
+.header {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 4rem;
+  padding: 0 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: 0.3s ease-in;
+}
+
+.header > a:first-child {
+  display: flex;
+  align-items: center;
+}
+
+.header > a:first-child > img {
+  margin-right: 10px;
+  width: 40px;
+}
+
+.header > a:first-child > p {
+  font-size: 20px;
+  font-weight: 500;
+  color: #fff;
+}
+
+.header.active {
+  background-color: rgba(0, 0, 0, 0.25);
+}

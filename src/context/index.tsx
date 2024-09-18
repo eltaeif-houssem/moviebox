@@ -21,7 +21,6 @@ export const ContextProvider: React.FC<Props> = ({ children }) => {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (data) => {
-      console.log(data);
       if (data) {
         setUser(data);
       } else {
