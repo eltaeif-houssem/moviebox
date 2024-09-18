@@ -105,6 +105,7 @@ export const getMovieReviews = async (
 
 /**
  * @GET search movie
+ * @param query: search string
  * @param page: page number
  * @returns {AxiosResponse<IMovieList>} object
  */
