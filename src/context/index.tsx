@@ -2,7 +2,7 @@ import React, { createContext, useContext, useEffect, useState } from "react";
 import type { IAppContext } from "@interfaces/context";
 import { onAuthStateChanged, User } from "firebase/auth";
 import { auth } from "@configs/firebase.config";
-import GearsSpinner from "@/components/spinners/GearsSpinner";
+import InfiniteSpinner from "@/components/spinners/InfiniteSpinner";
 
 const AppContext = createContext<IAppContext>({
   user: null,
@@ -21,6 +21,7 @@ export const ContextProvider: React.FC<Props> = ({ children }) => {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (data) => {
+      console.log(data);
       if (data) {
         setUser(data);
       } else {
@@ -33,7 +34,7 @@ export const ContextProvider: React.FC<Props> = ({ children }) => {
   }, []);
 
   if (loading) {
-    return <GearsSpinner />;
+    return <InfiniteSpinner />;
   }
 
   return (

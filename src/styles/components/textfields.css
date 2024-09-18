@@ -1,0 +1,34 @@
+/*=== Handle text field form ===*/
+.text-field-form {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.text-field-form > input {
+  width: 100%;
+  height: 45px;
+  outline: none;
+  padding: 0 15px;
+  font-size: 16px;
+  border-radius: 7px;
+  border: 1px #fff solid;
+  transition: 0.1s ease-in;
+  margin-bottom: 7px;
+}
+
+.text-field-form > input:hover {
+  border: 1px red solid;
+}
+
+.text-field-form > input:focus {
+  border: 1px red solid;
+}
+
+.text-field-form > div {
+  width: 100%;
+  height: 15px;
+}
+.text-field-form > div > p {
+  color: red;
+  font-size: 12px;
+}

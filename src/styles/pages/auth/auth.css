@@ -1,0 +1,96 @@
+.section {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-image: url("/src/assets/movies-bg.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.section > form {
+  width: 430px;
+  padding: 30px 30px;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 10px;
+}
+
+.section > form > h1 {
+  color: #fff;
+  margin-bottom: 25px;
+}
+
+.section > form > div {
+  width: 100%;
+}
+
+.section > form > div > p {
+  color: #fff;
+  margin-bottom: 5px;
+}
+
+.section > form > button {
+  cursor: pointer;
+  width: 100%;
+  background-color: red;
+  color: #fff;
+  border: 2px red solid;
+  padding: 10px 0px;
+  border-radius: 7px;
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 15px;
+  transition: 0.2s ease-in;
+}
+
+.section > form > button:hover {
+  color: red;
+  background-color: #fff;
+}
+
+.section > .signin-container > .guest-btn {
+  background-color: orange;
+  border: 2px orange solid;
+}
+
+.section > .signin-container > .guest-btn:hover {
+  color: orange;
+  background-color: #fff;
+}
+
+.section > .signin-container > .forget-password-link {
+  color: #fff;
+  text-decoration: underline;
+  transition: 0.2s ease-in;
+}
+
+.section > .signin-container > .forget-password-link:hover {
+  color: rgb(0, 132, 255);
+}
+
+.section > .signin-container > p {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #fff;
+}
+
+.section > .signin-container > p > a {
+  text-decoration: underline;
+  color: #888;
+}
+
+.section > .signup-container > p {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #fff;
+}
+
+.section > .signup-container > p > a {
+  color: #fff;
+  color: #888;
+  text-decoration: underline;
+}

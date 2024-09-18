@@ -6,6 +6,10 @@
   justify-content: center;
 }
 
-.spinner > svg {
+.spinner > .gears-spinner {
+  width: 120px;
+}
+
+.spinner > .infinite-spinner {
   width: 120px;
 }
