@@ -5,7 +5,7 @@ import {
   signOut,
 } from "firebase/auth";
 import { auth } from "@configs/firebase.config";
-import { authErrorMessageHandler } from "@/utils/auth.util";
+import { authErrorMessageHandler } from "@utils/auth.util";
 
 const { VITE_APP_FIREBASE_APP_DOMAIN_NAME } = import.meta.env;
 
