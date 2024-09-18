@@ -27,7 +27,8 @@
       "@interfaces/*": ["./src/interfaces/*"],
       "@services/*": ["./src/services/*"],
       "@constants/*": ["./src/constants/*"],
-      "@assets/*": ["./src/assets/*"]
+      "@assets/*": ["./src/assets/*"],
+      "@configs/*": ["./src/configs/*"]
     }
   },
   "include": ["src"]
