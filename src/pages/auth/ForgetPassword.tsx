@@ -5,7 +5,7 @@ import authService from "@services/auth.service";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "@styles/pages/auth/auth.css";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { appContext } from "@/context";
 
 interface IForgetPassword {
