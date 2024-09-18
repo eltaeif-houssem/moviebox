@@ -32,7 +32,8 @@
       "@context/*": ["./src/context/*"],
       "@components/*": ["./src/components/*"],
       "@styles/*": ["./src/styles/*"],
-      "@routes/*": ["./src/routes/*"]
+      "@routes/*": ["./src/routes/*"],
+      "@pages/*": ["./src/pages/*"]
     }
   },
   "include": ["src"]
