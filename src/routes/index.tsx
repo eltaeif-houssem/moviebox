@@ -7,7 +7,15 @@ const Signin = lazy(() => import("@pages/auth/Signin"));
 const Signup = lazy(() => import("@pages/auth/Signup"));
 const ForgetPassword = lazy(() => import("@pages/auth/ForgetPassword"));
 
+// import other pages
+const HomePage = lazy(() => import("@pages/home"));
+
+// define router pages
 export const router: RouteObject[] = [
+  {
+    path: routePaths.HOME_PAGE,
+    element: <HomePage />,
+  },
   {
     path: routePaths.AUTH_SIGNIN,
     element: <Signin />,
