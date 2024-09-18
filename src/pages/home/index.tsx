@@ -1,11 +1,11 @@
 import React from "react";
-import Header from "@components/headers/Header";
+import Layout from "@components/layout";
 
 const index: React.FC = () => {
   return (
-    <div style={{ height: "200vh" }}>
-      <Header />
-    </div>
+    <Layout>
+      <p>Hey bro</p>
+    </Layout>
   );
 };
 

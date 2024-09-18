@@ -1,5 +1,7 @@
-// src/components/AvatarDropdown.js
 import React, { useState, useEffect, useRef } from "react";
+import authService from "@/services/auth.service";
+import { toast, ToastContainer } from "react-toastify";
+import avatar from "@assets/avatar.png";
 import "@styles/components/menus.css";
 
 const AvatarMenu: React.FC = () => {
@@ -33,11 +35,22 @@ const AvatarMenu: React.FC = () => {
     };
   }, []);
 
+  const logoutHandler = async () => {
+    const response = await authService.signout();
+    if (response.error) {
+      toast.error(response.error);
+    }
+    handleClose();
+  };
+
   return (
     <div className="avatar-dropdown">
-      <div className="avatar" onClick={handleToggle} ref={avatarRef}>
-        U
-      </div>
+      <img
+        src={avatar}
+        className="avatar"
+        onClick={handleToggle}
+        ref={avatarRef}
+      />
       {isOpen && (
         <div
           className="dropdown-menu"
@@ -45,16 +58,17 @@ const AvatarMenu: React.FC = () => {
           style={{ top: avatarRef.current?.offsetHeight || 0 }}
         >
           <div className="dropdown-item" onClick={handleClose}>
-            Profile
+            <i className="fa-solid fa-user" /> Profile
           </div>
           <div className="dropdown-item" onClick={handleClose}>
-            Settings
+            <i className="fa-solid fa-bookmark" /> Saved
           </div>
-          <div className="dropdown-item" onClick={handleClose}>
-            Logout
+          <div className="dropdown-item" onClick={logoutHandler}>
+            <i className="fa-solid fa-right-from-bracket" /> Logout
           </div>
         </div>
       )}
+      <ToastContainer position="bottom-left" />
     </div>
   );
 };

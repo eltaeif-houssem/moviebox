@@ -75,7 +75,7 @@ const Signin: React.FC = () => {
             defaultValue=""
             render={({ field: { onChange, value }, fieldState: { error } }) => (
               <TextfieldForm
-                type="text"
+                type="password"
                 placeholder="Enter password"
                 {...register("password", {
                   required: "Password is required",

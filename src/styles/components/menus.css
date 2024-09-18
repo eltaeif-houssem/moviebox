@@ -9,7 +9,7 @@
   height: 40px;
   background-color: #007bff;
   color: white;
-  border-radius: 50%;
+  border-radius: 7px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -19,7 +19,7 @@
 
 .dropdown-menu {
   position: absolute;
-  top: 100%; /* Position it below the avatar */
+  top: 100%;
   right: 0;
   background-color: white;
   border-radius: 8px;
@@ -30,8 +30,9 @@
 
 .dropdown-item {
   padding: 10px;
+  border-radius: 8px;
   cursor: pointer;
-  border-bottom: 1px solid #ddd;
+  font-weight: 500;
 }
 
 .dropdown-item:last-child {
@@ -40,4 +41,9 @@
 
 .dropdown-item:hover {
   background-color: #f0f0f0;
+}
+
+.dropdown-item > i {
+  color: #891b36;
+  margin-right: 5px;
 }
