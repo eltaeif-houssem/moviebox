@@ -1,5 +1,5 @@
-import { createBrowserRouter } from "react-router-dom";
+import { RouteObject } from "react-router-dom";
 
-export const router = createBrowserRouter([]);
+export const router: RouteObject[] = [];
 
 export default router;
