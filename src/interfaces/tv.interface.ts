@@ -167,3 +167,39 @@ export interface ITvReviews {
 export interface ITvGenres {
   genres: IGenre[];
 }
+
+export interface ITvSeason {
+  id: number;
+  air_date: string;
+  name: string;
+  overview: string;
+  poster_path: string;
+  season_number: number;
+  episode_count: number;
+}
+
+export interface ITvEpisode {
+  id: number;
+  name: string;
+  overview: string;
+  air_date: string;
+  episode_number: number;
+  season_number: number;
+  still_path: string;
+  vote_average: number;
+  vote_count: number;
+}
+
+interface ITvVideo {
+  id: string;
+  key: string;
+  name: string;
+  site: string;
+  size: number;
+  type: string;
+}
+
+export interface ITvVideoList {
+  id: number;
+  results: ITvVideo[];
+}

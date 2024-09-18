@@ -7,6 +7,9 @@ import {
   ITvImages,
   ITvReviews,
   ITvGenres,
+  ITvEpisode,
+  ITvSeason,
+  ITvVideoList,
 } from "@interfaces/tv.interface";
 
 /**
@@ -152,3 +155,85 @@ export const getTvByGenre = async (
   page: number = 1
 ): Promise<AxiosResponse<ITvList>> =>
   axios.get(`/discover/tv?with_genres=${genreId}&language=en-US&page=${page}`);
+
+/**
+ * @GET tv season details
+ * @param tvId: tv series id
+ * @param seasonNumber: season number
+ * @returns {AxiosResponse<ITvSeason>} object
+ */
+export const getSeasonDetails = async (
+  tvId: number,
+  seasonNumber: number
+): Promise<AxiosResponse<ITvSeason>> =>
+  axios.get(`/tv/${tvId}/season/${seasonNumber}`);
+
+/**
+ * @GET tv season videos
+ * @param tvId: tv series id
+ * @param seasonNumber: season number
+ * @returns {AxiosResponse<ITvVideoList>} object
+ */
+export const getSeasonTrailers = async (
+  tvId: number,
+  seasonNumber: number
+): Promise<AxiosResponse<ITvVideoList>> =>
+  axios.get(`/tv/${tvId}/season/${seasonNumber}/videos`);
+
+/**
+ * @GET tv season images
+ * @param tvId: tv series id
+ * @param seasonNumber: season number
+ * @returns {AxiosResponse<ITvImages>} object
+ */
+export const getSeasonImages = async (
+  tvId: number,
+  seasonNumber: number
+): Promise<AxiosResponse<ITvImages>> =>
+  axios.get(`/tv/${tvId}/season/${seasonNumber}/images`);
+
+/**
+ * @GET tv episode details
+ * @param tvId: tv series id
+ * @param seasonNumber: season number
+ * @param episodeNumber: episode number
+ * @returns {AxiosResponse<ITvEpisode>} object
+ */
+export const getEpisodeDetails = async (
+  tvId: number,
+  seasonNumber: number,
+  episodeNumber: number
+): Promise<AxiosResponse<ITvEpisode>> =>
+  axios.get(`/tv/${tvId}/season/${seasonNumber}/episode/${episodeNumber}`);
+
+/**
+ * @GET tv episode videos
+ * @param tvId: tv series id
+ * @param seasonNumber: season number
+ * @param episodeNumber: episode number
+ * @returns {AxiosResponse<ITvVideoList>} object
+ */
+export const getEpisodeTrailers = async (
+  tvId: number,
+  seasonNumber: number,
+  episodeNumber: number
+): Promise<AxiosResponse<ITvVideoList>> =>
+  axios.get(
+    `/tv/${tvId}/season/${seasonNumber}/episode/${episodeNumber}/videos`
+  );
+
+/**
+ * @GET tv episode images
+ * @param tvId: tv series id
+ * @param seasonNumber: season number
+ * @param episodeNumber: episode number
+ * @returns {AxiosResponse<ITvImages>} object
+ */
+export const getEpisodeImages = async (
+  tvId: number,
+  seasonNumber: number,
+  episodeNumber: number
+): Promise<AxiosResponse<ITvImages>> =>
+  axios.get(
+    `/tv/${tvId}/season/${seasonNumber}/episode/${episodeNumber}/images`
+  );

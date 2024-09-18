@@ -5,6 +5,9 @@ import {
   ITvImages,
   ITvReviews,
   ITvGenres,
+  ITvVideoList,
+  ITvSeason,
+  ITvEpisode,
 } from "../interfaces/tv.interface";
 import * as tvApi from "@apis/tv.api";
 
@@ -152,6 +155,99 @@ class TvService {
     } catch (error) {
       console.error(error);
       return {} as ITvList;
+    }
+  }
+
+  async fetchSeasonDetails(
+    tvId: number,
+    seasonNumber: number
+  ): Promise<ITvSeason> {
+    try {
+      const { data } = await tvApi.getSeasonDetails(tvId, seasonNumber);
+      return data;
+    } catch (error) {
+      console.error(error);
+      return {} as ITvSeason;
+    }
+  }
+
+  async fetchSeasonVideos(
+    tvId: number,
+    seasonNumber: number
+  ): Promise<ITvVideoList> {
+    try {
+      const { data } = await tvApi.getSeasonTrailers(tvId, seasonNumber);
+      return data;
+    } catch (error) {
+      console.error(error);
+      return {} as ITvVideoList;
+    }
+  }
+
+  async fetchSeasonImages(
+    tvId: number,
+    seasonNumber: number
+  ): Promise<ITvImages> {
+    try {
+      const { data } = await tvApi.getSeasonImages(tvId, seasonNumber);
+      return data;
+    } catch (error) {
+      console.error(error);
+      return {} as ITvImages;
+    }
+  }
+
+  async fetchEpisodeDetails(
+    tvId: number,
+    seasonNumber: number,
+    episodeNumber: number
+  ): Promise<ITvEpisode> {
+    try {
+      const { data } = await tvApi.getEpisodeDetails(
+        tvId,
+        seasonNumber,
+        episodeNumber
+      );
+      return data;
+    } catch (error) {
+      console.error(error);
+      return {} as ITvEpisode;
+    }
+  }
+
+  async fetchEpisodeVideos(
+    tvId: number,
+    seasonNumber: number,
+    episodeNumber: number
+  ): Promise<ITvVideoList> {
+    try {
+      const { data } = await tvApi.getEpisodeTrailers(
+        tvId,
+        seasonNumber,
+        episodeNumber
+      );
+      return data;
+    } catch (error) {
+      console.error(error);
+      return {} as ITvVideoList;
+    }
+  }
+
+  async fetchEpisodeImages(
+    tvId: number,
+    seasonNumber: number,
+    episodeNumber: number
+  ): Promise<ITvImages> {
+    try {
+      const { data } = await tvApi.getEpisodeImages(
+        tvId,
+        seasonNumber,
+        episodeNumber
+      );
+      return data;
+    } catch (error) {
+      console.error(error);
+      return {} as ITvImages;
     }
   }
 }
