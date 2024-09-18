@@ -26,7 +26,7 @@ interface IDates {
   minimum: string; // 2024-05-24
 }
 
-interface IMovie {
+export interface IMovie {
   id: number;
   adult: boolean;
   backdrop_path?: string;
