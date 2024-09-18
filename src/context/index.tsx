@@ -2,6 +2,7 @@ import React, { createContext, useContext, useEffect, useState } from "react";
 import type { IAppContext } from "@interfaces/context";
 import { onAuthStateChanged, User } from "firebase/auth";
 import { auth } from "@configs/firebase.config";
+import GearsSpinner from "@/components/spinners/GearsSpinner";
 
 const AppContext = createContext<IAppContext>({
   user: null,
@@ -32,7 +33,7 @@ export const ContextProvider: React.FC<Props> = ({ children }) => {
   }, []);
 
   if (loading) {
-    return <p>Loading...</p>;
+    return <GearsSpinner />;
   }
 
   return (
