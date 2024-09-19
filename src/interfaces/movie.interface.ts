@@ -68,7 +68,7 @@ export interface IMovieListDateRange extends IMovieList {
   dates: IDates;
 }
 
-interface IMovieTrailer {
+export interface IMovieTrailer {
   iso_639_1: string;
   iso_3166_1: string;
   name: string;

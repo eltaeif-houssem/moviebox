@@ -23,6 +23,10 @@
   height: 600px;
   background-color: #fff;
   border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 15px;
 }
 
 .backdrop-trailer > .backdrop-trailer-content > i {
@@ -37,4 +41,89 @@
 
 .backdrop-trailer > .backdrop-trailer-content > i:hover {
   opacity: 0.7;
+}
+
+.backdrop-trailer > .backdrop-trailer-content > .backdrop-trailer-content-left {
+  width: 250px;
+  height: 100%;
+  padding-right: 15px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.backdrop-trailer
+  > .backdrop-trailer-content
+  > .backdrop-trailer-content-left
+  > h3 {
+  margin-bottom: 20px;
+}
+
+.backdrop-trailer
+  > .backdrop-trailer-content
+  > .backdrop-trailer-content-left::-webkit-scrollbar {
+  background-color: rgba(0, 0, 0, 0.1);
+  width: 5px;
+  border-radius: 10px;
+}
+
+.backdrop-trailer
+  > .backdrop-trailer-content
+  > .backdrop-trailer-content-left::-webkit-scrollbar-thumb {
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 10px;
+}
+
+.backdrop-trailer
+  > .backdrop-trailer-content
+  > .backdrop-trailer-content-left
+  > .movie-trailer-list-item {
+  cursor: pointer;
+  width: 100%;
+  margin-bottom: 20px;
+  transition: 0.2s ease-in;
+  padding: 7px 10px;
+  border-radius: 10px;
+}
+
+.backdrop-trailer
+  > .backdrop-trailer-content
+  > .backdrop-trailer-content-left
+  > .movie-trailer-list-item:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.backdrop-trailer
+  > .backdrop-trailer-content
+  > .backdrop-trailer-content-left
+  > .movie-trailer-list-item
+  > h4 {
+  margin-bottom: 5px;
+}
+
+.backdrop-trailer
+  > .backdrop-trailer-content
+  > .backdrop-trailer-content-left
+  > .movie-trailer-list-item
+  > img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.backdrop-trailer
+  > .backdrop-trailer-content
+  > .backdrop-trailer-content-left
+  > .movie-trailer-list-item
+  > p {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.backdrop-trailer
+  > .backdrop-trailer-content
+  > .backdrop-trailer-content-right {
+  width: 650px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
