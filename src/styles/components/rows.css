@@ -92,6 +92,7 @@
   opacity: 0.8;
   font-size: 20px;
   transition: color 0.2s ease-in;
+  height: fit-content;
 }
 
 .movie-row
