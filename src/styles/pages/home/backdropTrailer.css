@@ -92,6 +92,14 @@
   > .movie-trailer-list-item:hover {
   background-color: rgba(0, 0, 0, 0.1);
 }
+
+.backdrop-trailer
+  > .backdrop-trailer-content
+  > .backdrop-trailer-content-left
+  > .movie-trailer-list-item.active {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
 .backdrop-trailer
   > .backdrop-trailer-content
   > .backdrop-trailer-content-left
@@ -126,4 +134,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+}
+
+.backdrop-trailer
+  > .backdrop-trailer-content
+  > .backdrop-trailer-content-right
+  > h1 {
+  margin-bottom: 10px;
 }

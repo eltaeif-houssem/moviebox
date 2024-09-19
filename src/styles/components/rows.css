@@ -1,0 +1,135 @@
+.movie-row {
+  width: 100%;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.movie-row > div:first-child {
+  margin-top: 2rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.5rem;
+}
+
+.movie-row > div:first-child > a {
+  color: #891b36;
+  transition: color 0.2s ease-in;
+}
+
+.movie-row > div:first-child > a:hover {
+  opacity: 0.8;
+}
+
+.movie-row > div:first-child > a > i {
+  font-size: 14px;
+  margin-left: 5px;
+}
+
+.movie-row .movie-row-slides {
+  margin: 20px 60px 0;
+}
+
+.movie-row .custom-swiper-button-prev,
+.movie-row .custom-swiper-button-next {
+  cursor: pointer;
+  top: 50%;
+  z-index: 99999;
+  position: absolute;
+  color: #891b36;
+  width: 50px;
+  height: 50px;
+  transition: color 0.2s ease-in;
+  font-size: 28px;
+}
+
+.movie-row .custom-swiper-button-prev {
+  left: 30px;
+}
+
+.movie-row .custom-swiper-button-next {
+  right: -10px;
+}
+
+.movie-row .custom-swiper-button-prev:hover,
+.movie-row .custom-swiper-button-next:hover {
+  color: rgba(137, 27, 54, 0.8);
+}
+
+.movie-row .movie-row-slides .movie-row-slide > .movie-row-slide-item {
+  cursor: pointer;
+  transition: box-shadow 0.2s ease-in;
+  height: 470px;
+}
+
+.movie-row .movie-row-slides .movie-row-slide > .movie-row-slide-item:hover {
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+}
+
+.movie-row
+  .movie-row-slides
+  .movie-row-slide
+  > .movie-row-slide-item
+  > div:first-child {
+  background-position: center;
+  background-size: cover;
+  height: 300px;
+  display: flex;
+  justify-content: flex-end;
+  padding: 15px 20px;
+  margin-bottom: 10px;
+}
+
+.movie-row
+  .movie-row-slides
+  .movie-row-slide
+  > .movie-row-slide-item
+  > div:first-child
+  > i {
+  cursor: pointer;
+  color: #fff;
+  opacity: 0.8;
+  font-size: 20px;
+  transition: color 0.2s ease-in;
+}
+
+.movie-row
+  .movie-row-slides
+  .movie-row-slide
+  > .movie-row-slide-item
+  > div:first-child
+  > i:hover {
+  color: #891b36;
+}
+
+.movie-row
+  .movie-row-slides
+  .movie-row-slide
+  > .movie-row-slide-item
+  > div:nth-child(4) {
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.movie-row
+  .movie-row-slides
+  .movie-row-slide
+  > .movie-row-slide-item
+  > div:nth-child(4)
+  > div {
+  display: flex;
+  align-items: center;
+}
+
+.movie-row
+  .movie-row-slides
+  .movie-row-slide
+  > .movie-row-slide-item
+  > div:nth-child(4)
+  > div
+  > img {
+  margin-right: 5px;
+}

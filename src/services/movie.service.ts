@@ -20,7 +20,7 @@ class MovieService {
     }
   }
 
-  async fetchNowPlayingMovies(page: number): Promise<IMovieListDateRange> {
+  async fetchNowPlayingMovies(page: number = 1): Promise<IMovieListDateRange> {
     try {
       const { data } = await movieApi.getNowPlayingMovies(page);
       return data;
@@ -30,7 +30,7 @@ class MovieService {
     }
   }
 
-  async fetchPopularMovies(page: number): Promise<IMovieList> {
+  async fetchPopularMovies(page: number = 1): Promise<IMovieList> {
     try {
       const { data } = await movieApi.getPopularMovies(page);
       return data;
@@ -40,7 +40,7 @@ class MovieService {
     }
   }
 
-  async fetchTopRatedMovies(page: number): Promise<IMovieList> {
+  async fetchTopRatedMovies(page: number = 1): Promise<IMovieList> {
     try {
       const { data } = await movieApi.getTopRatedMovies(page);
       return data;
@@ -50,7 +50,7 @@ class MovieService {
     }
   }
 
-  async fetchUpcomingMovies(page: number): Promise<IMovieListDateRange> {
+  async fetchUpcomingMovies(page: number = 1): Promise<IMovieListDateRange> {
     try {
       const { data } = await movieApi.getUpcomingMovies(page);
       return data;

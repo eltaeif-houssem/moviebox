@@ -52,7 +52,9 @@ const BackdropTrailer: React.FC<Props> = (props) => {
               <h3>Movie trailers</h3>
               {trailers?.results.map((item, key) => (
                 <div
-                  className="movie-trailer-list-item"
+                  className={`movie-trailer-list-item ${
+                    item.id === trailer?.id && "active"
+                  }`}
                   key={key}
                   onClick={() => setTrailer(item)}
                 >
@@ -72,6 +74,7 @@ const BackdropTrailer: React.FC<Props> = (props) => {
               ))}
             </div>
             <div className="backdrop-trailer-content-right">
+              <h1>{movie.original_title || movie.title}</h1>
               <Youtube videoId={`${trailer?.key}`} opts={trailerListItem} />
             </div>
           </>

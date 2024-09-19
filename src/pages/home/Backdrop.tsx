@@ -4,11 +4,11 @@ import { IMovieItem, IMovieList } from "@interfaces/movie.interface";
 import movieService from "@services/movie.service";
 import BackdropItem from "./BackdropItem";
 import { Pagination, Autoplay } from "swiper/modules";
+import BackdropTrailer from "./BackdropTrailer";
 
 import "swiper/css";
 import "swiper/css/pagination";
 import "@styles/pages/home/backdrop.css";
-import BackdropTrailer from "./BackdropTrailer";
 
 const Backdrop: React.FC = () => {
   const [movies, setMovies] = useState<IMovieList | null>(null);
