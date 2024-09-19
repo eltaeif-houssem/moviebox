@@ -33,7 +33,7 @@
 }
 
 .header > a:nth-child(2) {
-  color: #000;
+  color: #fff;
   transition: 0.2s ease-in;
 }
 
