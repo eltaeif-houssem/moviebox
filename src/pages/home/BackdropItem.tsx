@@ -7,9 +7,10 @@ import tomatoLogo from "@assets/tomato.png";
 
 interface Props {
   movie: IMovieItem;
+  onClick: (movie: IMovieItem) => void;
 }
 
-const BackdropItem: React.FC<Props> = ({ movie }) => {
+const BackdropItem: React.FC<Props> = ({ movie, onClick }) => {
   return (
     <div
       className="backdrop-item"
@@ -32,7 +33,7 @@ const BackdropItem: React.FC<Props> = ({ movie }) => {
 
       <p>{stringUtil.verifyStringLength(`${movie.overview}`)}</p>
 
-      <button>
+      <button onClick={() => onClick(movie)}>
         <i className="fa-solid fa-circle-play" /> <span>Watch Trailer</span>
       </button>
     </div>

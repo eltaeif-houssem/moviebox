@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { IMovieList } from "@interfaces/movie.interface";
+import { IMovieItem, IMovieList } from "@interfaces/movie.interface";
 import movieService from "@services/movie.service";
 import BackdropItem from "./BackdropItem";
 import { Pagination, Autoplay } from "swiper/modules";
@@ -12,6 +12,8 @@ import BackdropTrailer from "./BackdropTrailer";
 
 const Backdrop: React.FC = () => {
   const [movies, setMovies] = useState<IMovieList | null>(null);
+  const [movie, setMovie] = useState<IMovieItem | null>(null);
+
   useEffect(() => {
     const fetchData = async () => {
       const response = await movieService.fetchTrendingMovies("week");
@@ -20,6 +22,14 @@ const Backdrop: React.FC = () => {
 
     fetchData();
   }, []);
+
+  const onclickHandler = (movie: IMovieItem) => {
+    setMovie(movie);
+  };
+
+  const onCloseTrailerHandler = () => {
+    setMovie(null);
+  };
   return (
     <>
       <Swiper
@@ -35,11 +45,13 @@ const Backdrop: React.FC = () => {
       >
         {movies?.results.map((movie, key) => (
           <SwiperSlide className="backdrop" key={key}>
-            <BackdropItem movie={movie} />
+            <BackdropItem movie={movie} onClick={onclickHandler} />
           </SwiperSlide>
         ))}
       </Swiper>
-      <BackdropTrailer />
+      {movie && (
+        <BackdropTrailer movie={movie} onClose={onCloseTrailerHandler} />
+      )}
     </>
   );
 };
