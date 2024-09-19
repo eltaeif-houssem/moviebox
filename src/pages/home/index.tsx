@@ -1,6 +1,4 @@
-import React, { useEffect, useState } from "react";
-import movieService from "@/services/movie.service";
-import { IMovieList } from "@interfaces/movie.interface";
+import React from "react";
 import Layout from "@components/layout";
 import Backdrop from "./Backdrop";
 import "@styles/pages/home/home.css";
