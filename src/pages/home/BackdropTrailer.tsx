@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
-import "@styles/pages/home/backdropTrailer.css";
+import Youtube, { YouTubeProps } from "react-youtube";
 import {
   IMovieItem,
   IMovieTrailer,
   IMovieTrailerList,
 } from "@interfaces/movie.interface";
-import movieService from "@/services/movie.service";
-import Youtube, { YouTubeProps } from "react-youtube";
-import InfiniteSpinner from "@/components/spinners/InfiniteSpinner";
+import movieService from "@services/movie.service";
+import InfiniteSpinner from "@components/spinners/InfiniteSpinner";
+import "@styles/pages/home/backdropTrailer.css";
 
 interface Props {
   movie: IMovieItem;
