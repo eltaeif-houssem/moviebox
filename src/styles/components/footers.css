@@ -1,0 +1,44 @@
+.footer {
+  width: 100%;
+  height: 35vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer > ul {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.footer > ul > li:not(:last-child) {
+  margin-right: 30px;
+}
+
+.footer > ul:first-child > li > a {
+  color: #111;
+  font-size: 26px;
+  transition: 0.2s ease-in;
+}
+
+.footer > ul:first-child > li > a:hover {
+  opacity: 0.8;
+}
+
+.footer > ul:nth-child(2) > li > p {
+  cursor: pointer;
+  color: #111;
+  font-size: 16px;
+  font-weight: 500;
+  transition: 0.2s ease-in;
+}
+
+.footer > ul:nth-child(2) > li > p:hover {
+  opacity: 0.8;
+}
+
+.footer > p {
+  color: #111;
+}
