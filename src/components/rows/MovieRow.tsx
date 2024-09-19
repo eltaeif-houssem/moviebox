@@ -17,6 +17,7 @@ import tomatoLogo from "@assets/tomato.png";
 import "swiper/css";
 import "swiper/css/navigation";
 import "@styles/components/rows.css";
+import { appContext } from "@/context";
 
 interface Props {
   title:
@@ -29,6 +30,7 @@ interface Props {
 }
 
 const MovieRow: React.FC<Props> = ({ title, movieGenres }) => {
+  const context = appContext();
   const [movies, setMovies] = useState<IMovieItem[]>([]);
   const prevRef = useRef<HTMLDivElement>(null);
   const nextRef = useRef<HTMLDivElement>(null);
@@ -92,7 +94,7 @@ const MovieRow: React.FC<Props> = ({ title, movieGenres }) => {
                     backgroundImage: `url(${TMDB_V3_IMAGE_API}/${movie.poster_path})`,
                   }}
                 >
-                  <i className="fa-solid fa-heart" />
+                  {context.user && <i className="fa-solid fa-heart" />}
                 </div>
                 <p>
                   {movie.original_language.toUpperCase()} ,{" "}
