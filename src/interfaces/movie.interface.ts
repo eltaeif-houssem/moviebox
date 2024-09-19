@@ -53,7 +53,7 @@ export interface IMovieDetails extends IMovie {
   tagline: string;
 }
 
-interface IMovieItem extends IMovie {
+export interface IMovieItem extends IMovie {
   genre_ids: number[];
 }
 

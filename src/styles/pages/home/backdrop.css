@@ -1,0 +1,80 @@
+.home-page > .backdrops {
+  width: 100%;
+  height: 100vh;
+}
+
+.home-page > .backdrops .swiper-pagination-bullet {
+  background-color: #ccc;
+}
+
+/* Active bullet color */
+.home-page > .backdrops .swiper-pagination-bullet-active {
+  background-color: #891b36; /* Replace with your desired color */
+}
+
+.home-page > .backdrops .backdrop {
+  width: 100%;
+  height: 100vh;
+  background-position: center;
+  background-size: cover;
+}
+
+.home-page > .backdrops .backdrop .backdrop-item {
+  width: 100%;
+  height: 100vh;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0 5rem;
+}
+
+.home-page > .backdrops .backdrop .backdrop-item > h1 {
+  color: #fff;
+  font-size: 42px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.home-page > .backdrops .backdrop .backdrop-item > div {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.home-page > .backdrops .backdrop .backdrop-item > div > div {
+  margin-right: 20px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+}
+
+.home-page > .backdrops .backdrop .backdrop-item > div > div > img {
+  margin-right: 5px;
+}
+
+.home-page > .backdrops .backdrop .backdrop-item > p {
+  color: #fff;
+  width: 400px;
+  margin-bottom: 30px;
+}
+
+.home-page > .backdrops .backdrop .backdrop-item > button {
+  cursor: pointer;
+  width: 250px;
+  padding: 12px 0px;
+  background-color: #891b36;
+  border: 2px #891b36 solid;
+  color: #fff;
+  border-radius: 10px;
+  font-size: 16px;
+  transition: 0.3s ease-in;
+  font-weight: 500;
+}
+
+.home-page > .backdrops .backdrop .backdrop-item > button:hover {
+  color: #891b36;
+  background-color: #fff;
+}

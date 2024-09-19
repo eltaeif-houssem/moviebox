@@ -9,6 +9,7 @@
   align-items: center;
   justify-content: space-between;
   transition: 0.3s ease-in;
+  z-index: 9999;
 }
 
 .header > a:first-child {
