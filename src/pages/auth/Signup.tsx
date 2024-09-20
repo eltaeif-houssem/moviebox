@@ -25,7 +25,7 @@ const Signup: React.FC = () => {
     if (response.error) {
       toast.error(`${response.error}`);
     } else {
-      navigate("/");
+      navigate(routePaths.HOME_PAGE);
     }
   };
 
