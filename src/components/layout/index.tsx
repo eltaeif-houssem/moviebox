@@ -3,12 +3,13 @@ import Header from "@components/headers/Header";
 
 interface Props {
   children: React.ReactNode;
+  dark?: boolean;
 }
 
-const Layout: React.FC<Props> = ({ children }) => {
+const Layout: React.FC<Props> = ({ children, dark }) => {
   return (
     <>
-      <Header />
+      <Header dark={dark} />
       {children}
     </>
   );

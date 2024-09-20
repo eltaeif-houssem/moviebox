@@ -13,7 +13,7 @@ const Saves: React.FC = () => {
   }
 
   return (
-    <Layout>
+    <Layout dark={true}>
       <div className="saves-page">index</div>
     </Layout>
   );

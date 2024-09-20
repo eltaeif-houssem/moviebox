@@ -6,7 +6,11 @@ import * as routePaths from "@constants/routePaths.contant";
 import "@styles/components/headers.css";
 import AvatarMenu from "../menus/AvatarMenu";
 
-const Header: React.FC = () => {
+interface Props {
+  dark?: boolean;
+}
+
+const Header: React.FC<Props> = ({ dark }) => {
   const context = appContext();
 
   const headerHandler = () => {
@@ -30,7 +34,7 @@ const Header: React.FC = () => {
   }, []);
 
   return (
-    <header id="header" className="header">
+    <header id="header" className={`header ${dark && "dark"}`}>
       <NavLink to={routePaths.HOME_PAGE}>
         <img src={logo} alt="logo" /> <p>Moviebox</p>
       </NavLink>

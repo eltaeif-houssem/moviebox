@@ -12,7 +12,7 @@ const Profile: React.FC = () => {
     return <Navigate to={routePaths.HOME_PAGE} />;
   }
   return (
-    <Layout>
+    <Layout dark={true}>
       <div className="profile-page">index</div>
     </Layout>
   );
