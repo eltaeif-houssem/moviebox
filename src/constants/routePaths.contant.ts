@@ -6,3 +6,4 @@ export const AUTH_FORGET_PASSWORD_PAGE = "/auth/forget-password";
 // other route paths
 export const HOME_PAGE = "/";
 export const PROFILE_PAGE = "/profile";
+export const SAVES_PAGE = "/saves";

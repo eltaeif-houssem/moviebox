@@ -2,12 +2,15 @@ import React, { useState, useEffect, useRef } from "react";
 import authService from "@/services/auth.service";
 import { toast, ToastContainer } from "react-toastify";
 import avatar from "@assets/avatar.png";
+import * as routePaths from "@constants/routePaths.contant";
+import { useNavigate } from "react-router-dom";
 import "@styles/components/menus.css";
 
 const AvatarMenu: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<any>(null);
   const avatarRef = useRef<any>(null);
+  const naviagate = useNavigate();
 
   const handleToggle = () => {
     setIsOpen(!isOpen);
@@ -43,6 +46,15 @@ const AvatarMenu: React.FC = () => {
     handleClose();
   };
 
+  const navigateToProfile = () => {
+    handleClose();
+    naviagate(routePaths.PROFILE_PAGE);
+  };
+
+  const navigateToSaves = () => {
+    handleClose();
+    naviagate(routePaths.SAVES_PAGE);
+  };
   return (
     <div className="avatar-dropdown">
       <img
@@ -57,10 +69,10 @@ const AvatarMenu: React.FC = () => {
           ref={dropdownRef}
           style={{ top: avatarRef.current?.offsetHeight || 0 }}
         >
-          <div className="dropdown-item" onClick={handleClose}>
+          <div className="dropdown-item" onClick={navigateToProfile}>
             <i className="fa-solid fa-user" /> Profile
           </div>
-          <div className="dropdown-item" onClick={handleClose}>
+          <div className="dropdown-item" onClick={navigateToSaves}>
             <i className="fa-solid fa-bookmark" /> Saved
           </div>
           <div className="dropdown-item" onClick={logoutHandler}>
