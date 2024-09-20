@@ -121,7 +121,7 @@ const Signup: React.FC = () => {
           </Link>
         </p>
 
-        <button type="submit">Enter account</button>
+        <button type="submit">Create account</button>
       </form>
       <ToastContainer position="bottom-left" />
     </section>
