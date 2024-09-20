@@ -18,6 +18,8 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "@styles/components/rows.css";
 import { appContext } from "@/context";
+import saveService from "@/services/save.service";
+import { ISaveItem } from "@/interfaces/save.interface";
 
 interface Props {
   title:
@@ -65,6 +67,35 @@ const MovieRow: React.FC<Props> = ({ title, movieGenres }) => {
     fetchData();
   }, [title]);
 
+  const saveMovieHandler = async (movie: IMovieItem) => {
+    if (!context.saves.flatMap((item) => item.itemId).includes(movie.id)) {
+      const newSaveItem: ISaveItem = {
+        uid: `${context.user?.uid}`,
+        date: `${movie.release_date}`,
+        genre: `${movieGenres?.genres
+          .filter((item) => movie.genre_ids.includes(item.id))
+          .map((item) => item.name)
+          .join(", ")}`,
+        itemId: movie.id,
+        language: movie.original_language,
+        title: movie.title || movie.original_title,
+        type: "movie",
+        vote_average: movie.vote_average,
+        vote_count: movie.vote_count,
+      };
+
+      const response: any = await saveService.saveItem(newSaveItem);
+      newSaveItem.id = response.id;
+      context.setSaves((state) => [...state, newSaveItem]);
+    } else {
+      const itemExist = context.saves.find((item) => item.itemId === movie.id);
+      context.setSaves((state) =>
+        state.filter((item) => item.id !== itemExist?.id)
+      );
+      await saveService.unSaveItem(`${itemExist?.id}`);
+    }
+  };
+
   return (
     <div className="movie-row">
       <div className="movie-row-header">
@@ -94,7 +125,16 @@ const MovieRow: React.FC<Props> = ({ title, movieGenres }) => {
                     backgroundImage: `url(${TMDB_V3_IMAGE_API}/${movie.poster_path})`,
                   }}
                 >
-                  {context.user && <i className="fa-solid fa-heart" />}
+                  {context.user && (
+                    <i
+                      className={`fa-solid fa-heart ${
+                        context.saves
+                          .flatMap((item) => item.itemId)
+                          .includes(movie.id) && "active"
+                      }`}
+                      onClick={() => saveMovieHandler(movie)}
+                    />
+                  )}
                 </div>
                 <p>
                   {movie.original_language.toUpperCase()} ,{" "}

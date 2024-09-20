@@ -109,6 +109,15 @@
   .movie-row-slides
   .movie-row-slide
   > .movie-row-slide-item
+  > div:first-child
+  > i.active {
+  color: #891b36;
+}
+
+.movie-row
+  .movie-row-slides
+  .movie-row-slide
+  > .movie-row-slide-item
   > div:nth-child(4) {
   margin-top: 5px;
   display: flex;

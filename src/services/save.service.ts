@@ -38,8 +38,7 @@ class SaveService {
 
   async unSaveItem(docId: string) {
     try {
-      const response = await deleteDoc(doc(db, "saves", docId));
-      return response;
+      await deleteDoc(doc(db, "saves", docId));
     } catch (error: any) {
       console.error(error);
       return { error: error.message };
