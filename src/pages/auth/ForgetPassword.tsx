@@ -7,6 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 import "@styles/pages/auth/auth.css";
 import { Navigate } from "react-router-dom";
 import { appContext } from "@/context";
+import * as routePaths from "@constants/routePaths.contant";
 
 interface IForgetPassword {
   email: string;
@@ -27,7 +28,7 @@ const ForgetPassword: React.FC = () => {
   };
 
   if (context.user) {
-    return <Navigate to="/" />;
+    return <Navigate to={routePaths.HOME_PAGE} />;
   }
 
   return (

@@ -30,7 +30,7 @@ const Signup: React.FC = () => {
   };
 
   if (context.user) {
-    return <Navigate to="/" />;
+    return <Navigate to={routePaths.HOME_PAGE} />;
   }
 
   return (
