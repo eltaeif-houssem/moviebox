@@ -1,7 +1,7 @@
 import React, { Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
 import routes from "@routes/index";
-import InfiniteSpinner from "./components/spinners/InfiniteSpinner";
+import InfiniteSpinner from "@components/spinners/InfiniteSpinner";
 
 const App: React.FC = () => {
   return (
