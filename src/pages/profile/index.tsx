@@ -9,7 +9,7 @@ const Profile: React.FC = () => {
   const context = appContext();
 
   if (!context.user) {
-    <Navigate to={routePaths.HOME_PAGE} />;
+    return <Navigate to={routePaths.HOME_PAGE} />;
   }
   return (
     <Layout>
