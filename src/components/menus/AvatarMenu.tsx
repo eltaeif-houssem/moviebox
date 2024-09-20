@@ -43,6 +43,7 @@ const AvatarMenu: React.FC = () => {
     if (response.error) {
       toast.error(response.error);
     }
+    naviagate(routePaths.HOME_PAGE);
     handleClose();
   };
 
