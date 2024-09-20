@@ -20,7 +20,8 @@
     "react-router-dom": "^6.26.2",
     "react-toastify": "^10.0.5",
     "react-youtube": "^10.1.0",
-    "swiper": "^11.1.14"
+    "swiper": "^11.1.14",
+    "unique-names-generator": "^4.7.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.0",
