@@ -115,6 +115,7 @@ const MovieRow: React.FC<Props> = ({ title, movieGenres }) => {
             prevEl: prevRef.current,
             nextEl: nextRef.current,
           }}
+          touchStartPreventDefault={false}
           className="mySwiper movie-row-slides"
         >
           {movies?.map((movie, key) => (

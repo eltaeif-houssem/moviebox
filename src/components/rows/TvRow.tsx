@@ -115,6 +115,7 @@ const TvRow: React.FC<Props> = ({ title, tvGenres }) => {
             prevEl: prevRef.current,
             nextEl: nextRef.current,
           }}
+          touchStartPreventDefault={false}
           className="mySwiper tv-row-slides"
         >
           {tvs?.map((tv, key) => (

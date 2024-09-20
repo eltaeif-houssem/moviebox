@@ -41,6 +41,7 @@ const Backdrop: React.FC = () => {
         }}
         pagination={true}
         loop={true}
+        touchStartPreventDefault={false}
         className="mySwiper backdrops"
       >
         {movies?.results.map((movie, key) => (
