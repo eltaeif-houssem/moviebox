@@ -17,15 +17,15 @@ export const router: RouteObject[] = [
     element: <HomePage />,
   },
   {
-    path: routePaths.AUTH_SIGNIN,
+    path: routePaths.AUTH_SIGNIN_PAGE,
     element: <Signin />,
   },
   {
-    path: routePaths.AUTH_SIGNUP,
+    path: routePaths.AUTH_SIGNUP_PAGE,
     element: <Signup />,
   },
   {
-    path: routePaths.AUTH_FORGET_PASSWORD,
+    path: routePaths.AUTH_FORGET_PASSWORD_PAGE,
     element: <ForgetPassword />,
   },
 ];

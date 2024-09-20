@@ -7,6 +7,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "@styles/pages/auth/auth.css";
 import { appContext } from "@/context";
+import * as routePaths from "@constants/routePaths.contant";
 
 interface ISignupForm {
   email: string;
@@ -116,7 +117,10 @@ const Signup: React.FC = () => {
 
         <p>
           Already have an account?{" "}
-          <Link to="/auth/signin" className="signin-btn-page-link">
+          <Link
+            to={routePaths.AUTH_SIGNIN_PAGE}
+            className="signin-btn-page-link"
+          >
             Signin
           </Link>
         </p>

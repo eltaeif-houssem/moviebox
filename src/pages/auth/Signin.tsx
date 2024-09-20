@@ -7,6 +7,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "@styles/pages/auth/auth.css";
 import { appContext } from "@/context";
+import * as routePaths from "@constants/routePaths.contant";
 
 interface ISigninForm {
   email: string;
@@ -92,12 +93,16 @@ const Signin: React.FC = () => {
           />
         </div>
 
-        <Link to="/auth/forget-password" className="forget-password-link">
+        <Link
+          to={routePaths.AUTH_FORGET_PASSWORD_PAGE}
+          className="forget-password-link"
+        >
           forget password?
         </Link>
 
         <p>
-          Don't have an account yet? <Link to="/auth/signup">Signup</Link>
+          Don't have an account yet?{" "}
+          <Link to={routePaths.AUTH_SIGNUP_PAGE}>Signup</Link>
         </p>
 
         <button type="submit">Enter account</button>
