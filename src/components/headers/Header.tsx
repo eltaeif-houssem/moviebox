@@ -35,7 +35,9 @@ const Header: React.FC = () => {
         <img src={logo} alt="logo" /> <p>Moviebox</p>
       </NavLink>
 
-      {!context.user && <NavLink to={routePaths.AUTH_SIGNIN}>Signin</NavLink>}
+      {!context.user && (
+        <NavLink to={routePaths.AUTH_SIGNIN_PAGE}>Signin</NavLink>
+      )}
 
       {context.user && <AvatarMenu />}
     </header>
