@@ -18,6 +18,8 @@ import { appContext } from "@context/index";
 import "swiper/css";
 import "swiper/css/navigation";
 import "@styles/components/rows.css";
+import { ISaveItem } from "@/interfaces/save.interface";
+import saveService from "@/services/save.service";
 
 interface Props {
   title:
@@ -65,6 +67,35 @@ const TvRow: React.FC<Props> = ({ title, tvGenres }) => {
     fetchData();
   }, [title]);
 
+  const saveTvHandler = async (tv: ITv) => {
+    if (!context.saves.flatMap((item) => item.itemId).includes(tv.id)) {
+      const newSaveItem: ISaveItem = {
+        uid: `${context.user?.uid}`,
+        date: `${tv.first_air_date}`,
+        genre: `${tvGenres?.genres
+          .filter((item) => tv.genre_ids.includes(item.id))
+          .map((item) => item.name)
+          .join(", ")}`,
+        itemId: tv.id,
+        language: tv.original_language,
+        title: tv.name || tv.original_name,
+        type: "movie",
+        vote_average: tv.vote_average,
+        vote_count: tv.vote_count,
+      };
+
+      const response: any = await saveService.saveItem(newSaveItem);
+      newSaveItem.id = response.id;
+      context.setSaves((state) => [...state, newSaveItem]);
+    } else {
+      const itemExist = context.saves.find((item) => item.itemId === tv.id);
+      context.setSaves((state) =>
+        state.filter((item) => item.id !== itemExist?.id)
+      );
+      await saveService.unSaveItem(`${itemExist?.id}`);
+    }
+  };
+
   return (
     <div className="tv-row">
       <div className="tv-row-header">
@@ -94,7 +125,16 @@ const TvRow: React.FC<Props> = ({ title, tvGenres }) => {
                     backgroundImage: `url(${TMDB_V3_IMAGE_API}/${tv.poster_path})`,
                   }}
                 >
-                  {context.user && <i className="fa-solid fa-heart" />}
+                  {context.user && (
+                    <i
+                      className={`fa-solid fa-heart ${
+                        context.saves
+                          .flatMap((item) => item.itemId)
+                          .includes(tv.id) && "active"
+                      }`}
+                      onClick={() => saveTvHandler(tv)}
+                    />
+                  )}
                 </div>
                 <p>
                   {tv.original_language.toUpperCase()} ,{" "}
