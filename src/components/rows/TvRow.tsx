@@ -1,0 +1,144 @@
+import React, { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
+import tvService from "@services/tv.service";
+import { ITvGenres, ITv } from "@interfaces/tv.interface";
+import {
+  ON_THE_AIR_TVS,
+  POPULAR_TVS,
+  TODAY_AIRING_TVS,
+  TOP_RATED_TVS,
+  TRENDING_TVS,
+} from "@constants/tvTitles.constant";
+import { TMDB_V3_IMAGE_API } from "@constants/apiUrls.constant";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
+import imdbLogo from "@assets/imdb.png";
+import tomatoLogo from "@assets/tomato.png";
+import { appContext } from "@context/index";
+import "swiper/css";
+import "swiper/css/navigation";
+import "@styles/components/rows.css";
+
+interface Props {
+  title:
+    | typeof ON_THE_AIR_TVS
+    | typeof POPULAR_TVS
+    | typeof TODAY_AIRING_TVS
+    | typeof TOP_RATED_TVS
+    | typeof TRENDING_TVS;
+  tvGenres?: ITvGenres;
+}
+
+const TvRow: React.FC<Props> = ({ title, tvGenres }) => {
+  const context = appContext();
+  const [tvs, setTvs] = useState<ITv[]>([]);
+  const prevRef = useRef<HTMLDivElement>(null);
+  const nextRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      let response;
+
+      switch (title) {
+        case ON_THE_AIR_TVS:
+          response = await tvService.fetchOnTheAirTv();
+          break;
+        case POPULAR_TVS:
+          response = await tvService.fetchPopularTv();
+          break;
+        case TODAY_AIRING_TVS:
+          response = await tvService.fetchAiringTodayTv();
+          break;
+        case TOP_RATED_TVS:
+          response = await tvService.fetchTopRatedTv();
+          break;
+        case TRENDING_TVS:
+          response = await tvService.fetchTrendingTv("week");
+          break;
+        default:
+          response = { results: [] };
+      }
+
+      setTvs(response?.results || []);
+    };
+
+    fetchData();
+  }, [title]);
+
+  return (
+    <div className="tv-row">
+      <div className="tv-row-header">
+        <h2>{title}</h2>
+        <Link to="/">
+          See more <i className="fa-solid fa-chevron-right" />
+        </Link>
+      </div>
+
+      <div className="swiper-container">
+        <Swiper
+          slidesPerView={6}
+          spaceBetween={25}
+          loop={true}
+          modules={[Navigation]}
+          navigation={{
+            prevEl: prevRef.current,
+            nextEl: nextRef.current,
+          }}
+          className="mySwiper tv-row-slides"
+        >
+          {tvs?.map((tv, key) => (
+            <SwiperSlide className="tv-row-slide" key={key}>
+              <div className="tv-row-slide-item">
+                <div
+                  style={{
+                    backgroundImage: `url(${TMDB_V3_IMAGE_API}/${tv.poster_path})`,
+                  }}
+                >
+                  {context.user && <i className="fa-solid fa-heart" />}
+                </div>
+                <p>
+                  {tv.original_language.toUpperCase()} ,{" "}
+                  {new Date(tv.first_air_date)
+                    .toLocaleDateString()
+                    .replace(/\//g, "-")}
+                </p>
+                <h4>{tv.name || tv.original_name}</h4>
+                <div className="tv-row-rating">
+                  <div>
+                    <img src={imdbLogo} alt="IMDb" />
+                    {tv.vote_average.toFixed(2)}/10
+                  </div>
+                  <div>
+                    <img src={tomatoLogo} alt="Tomato" />
+                    {tv.vote_count}
+                  </div>
+                </div>
+                <p>
+                  {tvGenres?.genres
+                    .filter((item) => tv.genre_ids.includes(item.id))
+                    .map((item) => item.name)
+                    .join(", ")}
+                </p>
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+
+        <div
+          className="custom-swiper-button custom-swiper-button-prev"
+          ref={prevRef}
+        >
+          <i className="fa-solid fa-chevron-left" />
+        </div>
+        <div
+          className="custom-swiper-button custom-swiper-button-next"
+          ref={nextRef}
+        >
+          <i className="fa-solid fa-chevron-right" />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default TvRow;

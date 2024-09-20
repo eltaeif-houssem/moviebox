@@ -61,7 +61,7 @@ interface ISpokenLanguage {
   name: string;
 }
 
-interface ITv {
+export interface ITv {
   id: number;
   adult: boolean;
   backdrop_path: string;
