@@ -8,6 +8,7 @@ import "react-toastify/dist/ReactToastify.css";
 import "@styles/pages/auth/auth.css";
 import { appContext } from "@/context";
 import * as routePaths from "@constants/routePaths.contant";
+import Layout from "@/components/layout";
 
 interface ISignupForm {
   email: string;
@@ -34,101 +35,112 @@ const Signup: React.FC = () => {
   }
 
   return (
-    <section className="section">
-      <form onSubmit={handleSubmit(onSubmit)} className="signup-container">
-        <h1>Signup</h1>
-        <div>
-          <p>Email</p>
-          <Controller
-            control={control}
-            name="email"
-            defaultValue=""
-            render={({ field: { onChange, value }, fieldState: { error } }) => (
-              <TextfieldForm
-                type="text"
-                placeholder="Enter email"
-                {...register("email", {
-                  required: "Email is required",
-                  pattern: {
-                    value: /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/,
-                    message: "Invalid email format",
-                  },
-                })}
-                helperText={error?.message || ""}
-                value={value}
-                onChange={onChange}
-              />
-            )}
-          />
-        </div>
+    <Layout>
+      <section className="section">
+        <form onSubmit={handleSubmit(onSubmit)} className="signup-container">
+          <h1>Signup</h1>
+          <div>
+            <p>Email</p>
+            <Controller
+              control={control}
+              name="email"
+              defaultValue=""
+              render={({
+                field: { onChange, value },
+                fieldState: { error },
+              }) => (
+                <TextfieldForm
+                  type="text"
+                  placeholder="Enter email"
+                  {...register("email", {
+                    required: "Email is required",
+                    pattern: {
+                      value: /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/,
+                      message: "Invalid email format",
+                    },
+                  })}
+                  helperText={error?.message || ""}
+                  value={value}
+                  onChange={onChange}
+                />
+              )}
+            />
+          </div>
 
-        <div>
-          <p>Password</p>
-          <Controller
-            control={control}
-            name="password"
-            defaultValue=""
-            render={({ field: { onChange, value }, fieldState: { error } }) => (
-              <TextfieldForm
-                type="password"
-                placeholder="Enter password"
-                {...register("password", {
-                  required: "Password is required",
-                  minLength: {
-                    value: 6,
-                    message: "Password length must be more than 6 characters",
-                  },
-                })}
-                helperText={error?.message || ""}
-                value={value}
-                onChange={onChange}
-              />
-            )}
-          />
-        </div>
+          <div>
+            <p>Password</p>
+            <Controller
+              control={control}
+              name="password"
+              defaultValue=""
+              render={({
+                field: { onChange, value },
+                fieldState: { error },
+              }) => (
+                <TextfieldForm
+                  type="password"
+                  placeholder="Enter password"
+                  {...register("password", {
+                    required: "Password is required",
+                    minLength: {
+                      value: 6,
+                      message: "Password length must be more than 6 characters",
+                    },
+                  })}
+                  helperText={error?.message || ""}
+                  value={value}
+                  onChange={onChange}
+                />
+              )}
+            />
+          </div>
 
-        <div>
-          <p>Confirm password</p>
-          <Controller
-            control={control}
-            name="confirmPassword"
-            defaultValue=""
-            render={({ field: { onChange, value }, fieldState: { error } }) => (
-              <TextfieldForm
-                type="password"
-                placeholder="Enter confirm password"
-                {...register("confirmPassword", {
-                  required: "Confirm password is required",
-                  validate: (data) => {
-                    const password = watch("password");
-                    if (data !== password) {
-                      return "Confirm password and password must be the same";
-                    }
-                    return true;
-                  },
-                })}
-                helperText={error?.message || ""}
-                value={value}
-                onChange={onChange}
-              />
-            )}
-          />
-        </div>
+          <div>
+            <p>Confirm password</p>
+            <Controller
+              control={control}
+              name="confirmPassword"
+              defaultValue=""
+              render={({
+                field: { onChange, value },
+                fieldState: { error },
+              }) => (
+                <TextfieldForm
+                  type="password"
+                  placeholder="Enter confirm password"
+                  {...register("confirmPassword", {
+                    required: "Confirm password is required",
+                    validate: (data) => {
+                      const password = watch("password");
+                      if (data !== password) {
+                        return "Confirm password and password must be the same";
+                      }
+                      return true;
+                    },
+                  })}
+                  helperText={error?.message || ""}
+                  value={value}
+                  onChange={onChange}
+                />
+              )}
+            />
+          </div>
 
-        <p>
-          Already have an account?{" "}
-          <Link
-            to={routePaths.AUTH_SIGNIN_PAGE}
-            className="signin-btn-page-link"
-          >
-            Signin
-          </Link>
-        </p>
+          <p>
+            Already have an account?{" "}
+            <Link
+              to={routePaths.AUTH_SIGNIN_PAGE}
+              className="signin-btn-page-link"
+            >
+              Signin
+            </Link>
+          </p>
 
-        <button type="submit">Create account</button>
-      </form>
-      <ToastContainer position="bottom-left" />
-    </section>
+          <button type="submit">Create account</button>
+        </form>
+        <ToastContainer position="bottom-left" />
+      </section>
+    </Layout>
   );
 };
 

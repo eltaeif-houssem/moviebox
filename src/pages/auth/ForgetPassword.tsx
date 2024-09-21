@@ -8,6 +8,7 @@ import "@styles/pages/auth/auth.css";
 import { Navigate } from "react-router-dom";
 import { appContext } from "@/context";
 import * as routePaths from "@constants/routePaths.contant";
+import Layout from "@/components/layout";
 
 interface IForgetPassword {
   email: string;
@@ -32,40 +33,45 @@ const ForgetPassword: React.FC = () => {
   }
 
   return (
-    <section className="section">
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        className="forget-password-container"
-      >
-        <h1>Forget Password</h1>
-        <div>
-          <p>Email</p>
-          <Controller
-            control={control}
-            name="email"
-            defaultValue=""
-            render={({ field: { onChange, value }, fieldState: { error } }) => (
-              <TextfieldForm
-                type="text"
-                placeholder="Enter email"
-                {...register("email", {
-                  required: "Email is required",
-                  pattern: {
-                    value: /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/,
-                    message: "Invalid email format",
-                  },
-                })}
-                helperText={error?.message || ""}
-                value={value}
-                onChange={onChange}
-              />
-            )}
-          />
-        </div>
-        <button type="submit">Send Link</button>
-      </form>
-      <ToastContainer position="bottom-left" style={{ width: "400px" }} />
-    </section>
+    <Layout>
+      <section className="section">
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="forget-password-container"
+        >
+          <h1>Forget Password</h1>
+          <div>
+            <p>Email</p>
+            <Controller
+              control={control}
+              name="email"
+              defaultValue=""
+              render={({
+                field: { onChange, value },
+                fieldState: { error },
+              }) => (
+                <TextfieldForm
+                  type="text"
+                  placeholder="Enter email"
+                  {...register("email", {
+                    required: "Email is required",
+                    pattern: {
+                      value: /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/,
+                      message: "Invalid email format",
+                    },
+                  })}
+                  helperText={error?.message || ""}
+                  value={value}
+                  onChange={onChange}
+                />
+              )}
+            />
+          </div>
+          <button type="submit">Send Link</button>
+        </form>
+        <ToastContainer position="bottom-left" style={{ width: "400px" }} />
+      </section>
+    </Layout>
   );
 };
 
