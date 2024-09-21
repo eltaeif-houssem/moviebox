@@ -57,3 +57,72 @@
   font-weight: 600;
   font-size: 15px;
 }
+
+.profile-page > .delete-account-modal {
+  z-index: 9999;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-page > .delete-account-modal > .backdrop {
+  z-index: 99999;
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  left: 0;
+  top: 0;
+}
+
+.profile-page > .delete-account-modal > form {
+  position: relative;
+  z-index: 999999;
+  background-color: #fff;
+  width: 400px;
+  height: 250px;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.profile-page > .delete-account-modal > form > i {
+  cursor: pointer;
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  font-size: 18px;
+  color: #000;
+  transition: 0.2s ease-in;
+}
+
+.profile-page > .delete-account-modal > form > i:hover {
+  color: #891b36;
+}
+
+.profile-page > .delete-account-modal > form > h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #444;
+}
+
+.profile-page > .delete-account-modal > form > div > p {
+  color: #444;
+  font-weight: 500;
+}
+
+.profile-page > .delete-account-modal > form > button {
+  cursor: pointer;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 7px;
+  font-size: 15px;
+  font-weight: 500;
+  background-color: green;
+  color: #fff;
+}

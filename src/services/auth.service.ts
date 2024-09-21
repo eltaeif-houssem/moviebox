@@ -3,6 +3,10 @@ import {
   signInWithEmailAndPassword,
   sendPasswordResetEmail,
   signOut,
+  deleteUser,
+  User,
+  EmailAuthProvider,
+  reauthenticateWithCredential,
 } from "firebase/auth";
 import { auth } from "@configs/firebase.config";
 import { authErrorMessageHandler } from "@utils/auth.util";
@@ -54,6 +58,33 @@ class AuthService {
     try {
       await signOut(auth);
       return { success: true }; // Return success message
+    } catch (error: any) {
+      const customError = authErrorMessageHandler(error);
+      return { error: customError.error };
+    }
+  }
+
+  // verify user password
+  async verifyPassword(email: string, password: string) {
+    const user = auth.currentUser;
+    try {
+      let response = null;
+      if (user) {
+        const credential = EmailAuthProvider.credential(email, password);
+        response = await reauthenticateWithCredential(user, credential);
+      }
+      return response;
+    } catch (error: any) {
+      const customError = authErrorMessageHandler(error);
+      return { error: customError.error };
+    }
+  }
+
+  // Delete user
+  async deleteAccount(user: User) {
+    try {
+      await deleteUser(user);
+      return { success: true };
     } catch (error: any) {
       const customError = authErrorMessageHandler(error);
       return { error: customError.error };

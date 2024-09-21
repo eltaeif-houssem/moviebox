@@ -31,7 +31,7 @@ const Signin: React.FC = () => {
 
   const joinAsGuest = () => {
     setValue("email", "guestuser@email.com");
-    setValue("password", "123456789");
+    setValue("password", "Q+Rdv;E=.vptEO=%YmUK-M,qM4A(");
     handleSubmit(onSubmit)();
   };
 
