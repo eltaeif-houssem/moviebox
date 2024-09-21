@@ -70,6 +70,7 @@ const AvatarMenu: React.FC = () => {
           ref={dropdownRef}
           style={{ top: avatarRef.current?.offsetHeight || 0 }}
         >
+          <div className="triangle-profile" />
           <div className="dropdown-item" onClick={navigateToProfile}>
             <i className="fa-solid fa-user" /> Profile
           </div>

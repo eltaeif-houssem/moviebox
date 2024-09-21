@@ -20,7 +20,8 @@
 .dropdown-menu {
   position: absolute;
   top: 100%;
-  right: 0;
+  right: 0px;
+  margin-top: 11px;
   background-color: white;
   border-radius: 8px;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
@@ -28,7 +29,19 @@
   z-index: 1000;
 }
 
+.triangle-profile {
+  z-index: -1;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  right: 10px;
+  top: -5px;
+  transform: rotate(45deg);
+  background-color: white;
+}
+
 .dropdown-item {
+  z-index: 9999;
   padding: 10px;
   border-radius: 8px;
   cursor: pointer;
