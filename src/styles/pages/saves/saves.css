@@ -7,6 +7,17 @@
 
 .saves-page > .left-side {
   width: 300px;
-  height: 100vh;
+  height: calc(100vh - 4rem);
   padding: 15px 10px;
+  border-right: 1px #ccc solid;
+}
+
+.saves-page > .left-side > .search-box {
+  width: 100%;
+}
+
+.saves-page > .left-side > .search-box > p {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 5px;
 }

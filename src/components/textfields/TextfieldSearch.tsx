@@ -5,10 +5,11 @@ interface Props {
   placeholder: string;
   value: string;
   onChange: React.ChangeEventHandler<HTMLInputElement>;
+  onClick?: () => void;
 }
 
 const TextfieldSearch: React.FC<Props> = (props) => {
-  const { placeholder, value, onChange } = props;
+  const { placeholder, value, onChange, onClick } = props;
   return (
     <div className="textfield-search">
       <input
@@ -17,7 +18,7 @@ const TextfieldSearch: React.FC<Props> = (props) => {
         value={value}
         onChange={onChange}
       />
-      <i className="fa-solid fa-magnifying-glass" />
+      <i className="fa-solid fa-magnifying-glass" onClick={onClick} />
     </div>
   );
 };

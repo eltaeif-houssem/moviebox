@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Layout from "@components/layout";
 import { appContext } from "@context/index";
 import { Navigate } from "react-router-dom";
@@ -8,21 +8,29 @@ import TextfieldSearch from "@/components/textfields/TextfieldSearch";
 
 const Saves: React.FC = () => {
   const context = appContext();
+  const [search, setSearch] = useState<string>("");
 
   if (!context.user) {
     return <Navigate to={routePaths.HOME_PAGE} />;
   }
 
+  const searchTextHandler = (event: any) => {
+    const { value } = event.target;
+    setSearch(value);
+  };
+
+  const searchBtnHandler = () => {};
   return (
     <Layout dark={true}>
       <div className="saves-page">
         <div className="left-side">
-          <div>
+          <div className="search-box">
             <p>Search saves</p>
             <TextfieldSearch
               placeholder="Search..."
-              value=""
-              onChange={() => {}}
+              value={search}
+              onChange={searchTextHandler}
+              onClick={searchBtnHandler}
             />
           </div>
         </div>
