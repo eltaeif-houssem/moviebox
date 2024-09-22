@@ -53,3 +53,13 @@
 .saves-page > .left-side > .filters > div > div > label {
   font-weight: 500;
 }
+
+.saves-page > .right-side {
+  width: 100%;
+  height: calc(100vh - 4rem);
+  overflow-y: scroll;
+}
+
+.saves-page > .right-side::-webkit-scrollbar {
+  display: none;
+}

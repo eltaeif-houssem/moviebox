@@ -82,6 +82,7 @@ const MovieRow: React.FC<Props> = ({ title, movieGenres }) => {
         type: "movie",
         vote_average: movie.vote_average,
         vote_count: movie.vote_count,
+        poster_path: movie.poster_path,
       };
 
       const response: any = await saveService.saveItem(newSaveItem);

@@ -9,4 +9,5 @@ export interface ISaveItem {
   language: string;
   genre: string;
   date: string;
+  poster_path: string;
 }

@@ -79,9 +79,10 @@ const TvRow: React.FC<Props> = ({ title, tvGenres }) => {
         itemId: tv.id,
         language: tv.original_language,
         title: tv.name || tv.original_name,
-        type: "movie",
+        type: "tv",
         vote_average: tv.vote_average,
         vote_count: tv.vote_count,
+        poster_path: tv.poster_path,
       };
 
       const response: any = await saveService.saveItem(newSaveItem);

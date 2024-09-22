@@ -10,6 +10,9 @@ import { ISaveItem } from "@/interfaces/save.interface";
 import movieService from "@/services/movie.service";
 import tvService from "@/services/tv.service";
 import { IGenre } from "@/interfaces/tv.interface";
+import { TMDB_V3_IMAGE_API } from "@/constants/apiUrls.constant";
+import imdbLogo from "@assets/imdb.png";
+import tomatoLogo from "@assets/tomato.png";
 
 interface IFilter {
   search: string;
@@ -90,6 +93,14 @@ const Saves: React.FC = () => {
     }
   };
 
+  const unSaveMovieHandler = async (movieId: string) => {
+    const itemExist = context.saves.find((item) => item.id === movieId);
+    context.setSaves((state) =>
+      state.filter((item) => item.id !== itemExist?.id)
+    );
+    await saveService.unSaveItem(`${itemExist?.id}`);
+  };
+
   return (
     <Layout dark={true}>
       <div className="saves-page">
@@ -149,7 +160,43 @@ const Saves: React.FC = () => {
             </div>
           </div>
         </div>
-        <div className="right-side"></div>
+        <div className="right-side">
+          {saves.map((item, key) => (
+            <div className="movie-item" key={key}>
+              <div
+                style={{
+                  backgroundImage: `url(${TMDB_V3_IMAGE_API}/${item.poster_path})`,
+                }}
+              >
+                {context.user && (
+                  <i
+                    className={`fa-solid fa-heart ${
+                      context.saves
+                        .flatMap((item) => item.itemId)
+                        .includes(item.itemId) && "active"
+                    }`}
+                    onClick={() => unSaveMovieHandler(`${item?.id}`)}
+                  />
+                )}
+              </div>
+              <p>
+                {item.language} , {item.date}
+              </p>
+              <h4>{item.title}</h4>
+              <div className="movie-item-rating">
+                <div>
+                  <img src={imdbLogo} alt="IMDb" />
+                  {item.vote_average.toFixed(2)}/10
+                </div>
+                <div>
+                  <img src={tomatoLogo} alt="Tomato" />
+                  {item.vote_count}
+                </div>
+              </div>
+              <p>{item.genre}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </Layout>
   );
