@@ -18,6 +18,38 @@
 
 .saves-page > .left-side > .search-box > p {
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 600;
   margin-bottom: 5px;
+}
+
+.saves-page > .left-side > .filters {
+  margin-top: 20px;
+  overflow-y: scroll;
+  height: 84%;
+}
+
+.saves-page > .left-side > .filters::-webkit-scrollbar {
+  display: none;
+}
+
+.saves-page > .left-side > .filters > div > p {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.saves-page > .left-side > .filters > div > div {
+  padding-left: 7px;
+  display: flex;
+  align-items: center;
+}
+
+.saves-page > .left-side > .filters > div > div > input {
+  width: 17px;
+  height: 17px;
+  margin-right: 5px;
+}
+
+.saves-page > .left-side > .filters > div > div > label {
+  font-weight: 500;
 }
