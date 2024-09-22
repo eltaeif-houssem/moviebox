@@ -6,10 +6,12 @@ import * as routePaths from "@constants/routePaths.contant";
 import "@styles/pages/saves/saves.css";
 import TextfieldSearch from "@/components/textfields/TextfieldSearch";
 import saveService from "@/services/save.service";
+import { ISaveItem } from "@/interfaces/save.interface";
 
 const Saves: React.FC = () => {
   const context = appContext();
   const [search, setSearch] = useState<string>("");
+  const [saves, setSaves] = useState<ISaveItem[]>([]);
 
   if (!context.user) {
     return <Navigate to={routePaths.HOME_PAGE} />;
@@ -21,8 +23,10 @@ const Saves: React.FC = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await saveService.fetchSaves(`${context.user?.uid}`);
-      console.log(response);
+      const response: any = await saveService.fetchSaves(
+        `${context.user?.uid}`
+      );
+      setSaves(response);
     };
 
     fetchData();
