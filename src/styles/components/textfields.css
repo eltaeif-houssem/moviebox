@@ -32,3 +32,40 @@
   color: red;
   font-size: 12px;
 }
+
+/*=== handle search textfield ===*/
+.textfield-search {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 48px;
+  border: 1px #ccc solid;
+  border-radius: 7px;
+}
+
+.textfield-search > input {
+  width: 100%;
+  border: none;
+  outline: none;
+  padding: 0px 15px;
+  font-size: 16px;
+}
+
+.textfield-search > i {
+  cursor: pointer;
+  background-color: #4488e0;
+  color: #fff;
+  height: 100%;
+  width: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 7px;
+  transition: 0.2s ease-in;
+  font-size: 18px;
+}
+
+.textfield-search > i:hover {
+  opacity: 0.8;
+}

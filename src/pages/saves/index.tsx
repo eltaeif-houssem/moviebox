@@ -1,9 +1,10 @@
 import React from "react";
-import "@styles/pages/saves/saves.css";
-import Layout from "@/components/layout";
-import { appContext } from "@/context";
+import Layout from "@components/layout";
+import { appContext } from "@context/index";
 import { Navigate } from "react-router-dom";
 import * as routePaths from "@constants/routePaths.contant";
+import "@styles/pages/saves/saves.css";
+import TextfieldSearch from "@/components/textfields/TextfieldSearch";
 
 const Saves: React.FC = () => {
   const context = appContext();
@@ -14,7 +15,19 @@ const Saves: React.FC = () => {
 
   return (
     <Layout dark={true}>
-      <div className="saves-page">index</div>
+      <div className="saves-page">
+        <div className="left-side">
+          <div>
+            <p>Search saves</p>
+            <TextfieldSearch
+              placeholder="Search..."
+              value=""
+              onChange={() => {}}
+            />
+          </div>
+        </div>
+        <div className="right-side"></div>
+      </div>
     </Layout>
   );
 };
