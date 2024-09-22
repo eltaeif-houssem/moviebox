@@ -11,18 +11,28 @@ import movieService from "@/services/movie.service";
 import tvService from "@/services/tv.service";
 import { IGenre } from "@/interfaces/tv.interface";
 
+interface IFilter {
+  search: string;
+  movieType: string[];
+  genderType: string[];
+}
+
 const Saves: React.FC = () => {
   const context = appContext();
-  const [search, setSearch] = useState<string>("");
   const [saves, setSaves] = useState<ISaveItem[]>([]);
   const [genres, setGenres] = useState<IGenre[]>([]);
+  const [filters, setFilters] = useState<IFilter>({
+    search: "",
+    movieType: [],
+    genderType: [],
+  });
 
   if (!context.user) {
     return <Navigate to={routePaths.HOME_PAGE} />;
   }
 
   const searchTextHandler = (text: string) => {
-    setSearch(text);
+    setFilters((state) => ({ ...state, search: text }));
   };
 
   useEffect(() => {
@@ -56,6 +66,30 @@ const Saves: React.FC = () => {
     fetchData();
   }, []);
 
+  const movieTypeHandler = (event: any) => {
+    const value = event.target.value;
+    if (!filters.movieType.includes(`${value}`)) {
+      const newMovieType = filters.movieType;
+      newMovieType.push(value);
+      setFilters((state) => ({ ...state, movieType: newMovieType }));
+    } else {
+      const newMovieType = filters.movieType.filter((item) => item !== value);
+      setFilters((state) => ({ ...state, movieType: newMovieType }));
+    }
+  };
+
+  const genderTypeHandler = (event: any) => {
+    const value = event.target.value;
+    if (!filters.genderType.includes(`${value}`)) {
+      const newGenderType = filters.genderType;
+      newGenderType.push(value);
+      setFilters((state) => ({ ...state, genderType: newGenderType }));
+    } else {
+      const newGenderType = filters.genderType.filter((item) => item !== value);
+      setFilters((state) => ({ ...state, genderType: newGenderType }));
+    }
+  };
+
   return (
     <Layout dark={true}>
       <div className="saves-page">
@@ -72,11 +106,23 @@ const Saves: React.FC = () => {
             <div>
               <p>Movie Type</p>
               <div>
-                <input type="checkbox" name="option1" value="movie" />
+                <input
+                  type="checkbox"
+                  name="option1"
+                  value="movie"
+                  onChange={movieTypeHandler}
+                  checked={filters.movieType.includes("movie")}
+                />
                 <label>Movie</label>
               </div>
               <div>
-                <input type="checkbox" name="option2" value="tv" />
+                <input
+                  type="checkbox"
+                  name="option2"
+                  value="tv"
+                  onChange={movieTypeHandler}
+                  checked={filters.movieType.includes("tv")}
+                />
                 <label>Tv</label>
               </div>
             </div>
@@ -94,6 +140,8 @@ const Saves: React.FC = () => {
                     type="checkbox"
                     name={`option${key + 3}`}
                     value={item.name}
+                    onChange={genderTypeHandler}
+                    checked={filters.genderType.includes(`${item.name}`)}
                   />
                   <label>{item.name}</label>
                 </div>
@@ -108,6 +156,3 @@ const Saves: React.FC = () => {
 };
 
 export default Saves;
-
-// movie type (movie,tv)
-// gender
