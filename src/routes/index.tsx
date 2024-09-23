@@ -7,6 +7,14 @@ const Signin = lazy(() => import("@pages/auth/Signin"));
 const Signup = lazy(() => import("@pages/auth/Signup"));
 const ForgetPassword = lazy(() => import("@pages/auth/ForgetPassword"));
 
+// import movie pages
+const Movies = lazy(() => import("@pages/movie"));
+const MovieDetails = lazy(() => import("@pages/movie/MovieDetails"));
+
+// import tv pages
+const Tvs = lazy(() => import("@pages/tv"));
+const TvDetails = lazy(() => import("@pages/tv/TvDetails"));
+
 // import other pages
 const HomePage = lazy(() => import("@pages/home"));
 const Profile = lazy(() => import("@pages/profile"));
@@ -41,6 +49,26 @@ export const router: RouteObject[] = [
   {
     path: routePaths.SAVES_PAGE,
     element: <Saves />,
+  },
+
+  {
+    path: routePaths.MOVIES_PAGE,
+    element: <Movies />,
+  },
+
+  {
+    path: routePaths.MOVIE_DETAILS_PAGE,
+    element: <MovieDetails />,
+  },
+
+  {
+    path: routePaths.TVS_PAGE,
+    element: <Tvs />,
+  },
+
+  {
+    path: routePaths.TV_DETAILS_PAGE,
+    element: <TvDetails />,
   },
 
   {
