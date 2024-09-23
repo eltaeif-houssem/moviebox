@@ -20,6 +20,7 @@ import "swiper/css/navigation";
 import "@styles/components/rows.css";
 import { ISaveItem } from "@/interfaces/save.interface";
 import saveService from "@/services/save.service";
+import * as routePaths from "@constants/routePaths.contant";
 
 interface Props {
   title:
@@ -101,7 +102,7 @@ const TvRow: React.FC<Props> = ({ title, tvGenres }) => {
     <div className="tv-row">
       <div className="tv-row-header">
         <h2>{title}</h2>
-        <Link to="/">
+        <Link to={routePaths.TVS_PAGE}>
           See more <i className="fa-solid fa-chevron-right" />
         </Link>
       </div>

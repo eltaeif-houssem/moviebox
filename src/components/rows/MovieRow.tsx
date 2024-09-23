@@ -20,6 +20,7 @@ import "@styles/components/rows.css";
 import { appContext } from "@/context";
 import saveService from "@/services/save.service";
 import { ISaveItem } from "@/interfaces/save.interface";
+import * as routePaths from "@constants/routePaths.contant";
 
 interface Props {
   title:
@@ -101,7 +102,7 @@ const MovieRow: React.FC<Props> = ({ title, movieGenres }) => {
     <div className="movie-row">
       <div className="movie-row-header">
         <h2>{title}</h2>
-        <Link to="/">
+        <Link to={routePaths.MOVIES_PAGE}>
           See more <i className="fa-solid fa-chevron-right" />
         </Link>
       </div>
