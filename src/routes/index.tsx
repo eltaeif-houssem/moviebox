@@ -11,6 +11,7 @@ const ForgetPassword = lazy(() => import("@pages/auth/ForgetPassword"));
 const HomePage = lazy(() => import("@pages/home"));
 const Profile = lazy(() => import("@pages/profile"));
 const Saves = lazy(() => import("@pages/saves"));
+const ErrorPage = lazy(() => import("@pages/ErrorPage"));
 
 // define router pages
 export const router: RouteObject[] = [
@@ -40,6 +41,11 @@ export const router: RouteObject[] = [
   {
     path: routePaths.SAVES_PAGE,
     element: <Saves />,
+  },
+
+  {
+    path: routePaths.ERROR_PAGE,
+    element: <ErrorPage />,
   },
 ];
 

@@ -7,3 +7,4 @@ export const AUTH_FORGET_PASSWORD_PAGE = "/auth/forget-password";
 export const HOME_PAGE = "/";
 export const PROFILE_PAGE = "/profile";
 export const SAVES_PAGE = "/saves";
+export const ERROR_PAGE = "*";
