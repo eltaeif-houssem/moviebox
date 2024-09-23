@@ -106,9 +106,13 @@ class MovieService {
     }
   }
 
-  async fetchSearchMovie(query: string, page: number = 1): Promise<IMovieList> {
+  async fetchSearchMovie(
+    query: string,
+    page: number = 1,
+    genres: number[]
+  ): Promise<IMovieList> {
     try {
-      const { data } = await movieApi.getSearchMovie(query, page);
+      const { data } = await movieApi.getSearchMovie(query, page, genres);
       return data;
     } catch (error) {
       console.error(error);

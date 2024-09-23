@@ -107,13 +107,19 @@ export const getMovieReviews = async (
  * @GET search movie
  * @param query: search string
  * @param page: page number
+ * @param genres: genres list
  * @returns {AxiosResponse<IMovieList>} object
  */
 export const getSearchMovie = async (
   query: string,
-  page: number = 1
+  page: number = 1,
+  genres: number[]
 ): Promise<AxiosResponse<IMovieList>> =>
-  axios.get(`/search/movie?query=${query.split(" ").join(",")}&page=${page}`);
+  axios.get(
+    `/${query.length > 0 ? "search" : "discover"}/movie?page=${page}${
+      query.length > 0 ? "&query=" + query.split(" ").join(",") : ""
+    }${genres.length > 0 ? "&with_genres=" + genres.join(",") : ""}`
+  );
 
 /**
  * @GET movie genres
