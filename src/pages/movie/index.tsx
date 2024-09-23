@@ -55,7 +55,7 @@ const Movies: React.FC = () => {
     };
 
     fetchData();
-  }, [filters.genderType, filters.search, page]);
+  }, [filters, page]);
 
   useEffect(() => {
     const fetchData = async () => {
