@@ -79,6 +79,7 @@
   cursor: pointer;
   transition: box-shadow 0.2s ease-in;
   min-height: 430px;
+  height: fit-content;
 }
 
 .movies-page > .right-side > .right-side-content > .movie-item:hover {
