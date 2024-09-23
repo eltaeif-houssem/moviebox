@@ -97,7 +97,7 @@ const Movies: React.FC = () => {
     }
   };
 
-  const handlePageChange = (event: any, newPage: number) => {
+  const handlePageChange = (_: any, newPage: number) => {
     setPage(newPage);
   };
 
