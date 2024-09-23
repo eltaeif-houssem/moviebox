@@ -127,11 +127,6 @@ const Saves: React.FC = () => {
 
             <div>
               <p>Genders</p>
-              <div>
-                <input type="checkbox" name="option3" value="movie" />
-                <label>Movie</label>
-              </div>
-
               {genres.map((item, key) => (
                 <div key={key}>
                   <input
@@ -156,8 +151,15 @@ const Saves: React.FC = () => {
               if (filters.movieType.length === 0) {
                 return true;
               }
-
               return filters.movieType.includes(item.type);
+            })
+            .filter((item) => {
+              if (filters.genderType.length === 0) {
+                return true;
+              }
+              return filters.genderType.some((element) =>
+                item.genre.split(", ").includes(element)
+              );
             })
             .map((item, key) => (
               <div className="movie-item" key={key}>
