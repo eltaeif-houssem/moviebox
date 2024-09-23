@@ -11,6 +11,7 @@ import tomatoLogo from "@assets/tomato.png";
 import saveService from "@/services/save.service";
 import { TMDB_V3_IMAGE_API } from "@/constants/apiUrls.constant";
 import { ISaveItem } from "@/interfaces/save.interface";
+import Pagination from "@mui/material/Pagination";
 
 interface IFilter {
   search: string;
@@ -21,6 +22,7 @@ const Movies: React.FC = () => {
   const context = appContext();
   const [movies, setMovies] = useState<IMovieList>();
   const [genres, setGenres] = useState<IGenre[]>([]);
+  const [page, setPage] = useState<number>(1);
   const [filters, setFilters] = useState<IFilter>({
     search: "",
     genderType: [],
@@ -46,14 +48,14 @@ const Movies: React.FC = () => {
     const fetchData = async () => {
       const response = await movieService.fetchSearchMovie(
         filters.search,
-        1,
+        page,
         filters.genderType
       );
       setMovies(response);
     };
 
     fetchData();
-  }, [filters.genderType, filters.search]);
+  }, [filters.genderType, filters.search, page]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -93,6 +95,10 @@ const Movies: React.FC = () => {
       );
       await saveService.unSaveItem(`${itemExist?.id}`);
     }
+  };
+
+  const handlePageChange = (event: any, newPage: number) => {
+    setPage(newPage);
   };
 
   return (
@@ -173,7 +179,14 @@ const Movies: React.FC = () => {
                 </div>
               ))}
           </div>
-          <div>Pagination goes here</div>
+          <div className="pagination-box">
+            <Pagination
+              count={movies?.total_pages}
+              color="primary"
+              page={page}
+              onChange={handlePageChange}
+            />
+          </div>
         </div>
       </div>
     </Layout>
