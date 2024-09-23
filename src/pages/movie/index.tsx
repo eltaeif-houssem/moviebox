@@ -5,7 +5,12 @@ import { IGenre } from "@interfaces/tv.interface";
 import movieService from "@services/movie.service";
 import Layout from "@components/layout";
 import "@styles/pages/movie/movie.css";
-import { IMovieList } from "@/interfaces/movie.interface";
+import { IMovieItem, IMovieList } from "@/interfaces/movie.interface";
+import imdbLogo from "@assets/imdb.png";
+import tomatoLogo from "@assets/tomato.png";
+import saveService from "@/services/save.service";
+import { TMDB_V3_IMAGE_API } from "@/constants/apiUrls.constant";
+import { ISaveItem } from "@/interfaces/save.interface";
 
 interface IFilter {
   search: string;
@@ -59,6 +64,37 @@ const Movies: React.FC = () => {
 
     fetchData();
   }, []);
+
+  const saveMovieHandler = async (movie: IMovieItem) => {
+    if (!context.saves.flatMap((item) => item.itemId).includes(movie.id)) {
+      const newSaveItem: ISaveItem = {
+        uid: `${context.user?.uid}`,
+        date: `${movie.release_date}`,
+        genre: `${genres
+          .filter((item) => movie.genre_ids.includes(item.id))
+          .map((item) => item.name)
+          .join(", ")}`,
+        itemId: movie.id,
+        language: movie.original_language,
+        title: movie.title || movie.original_title,
+        type: "movie",
+        vote_average: movie.vote_average,
+        vote_count: movie.vote_count,
+        poster_path: movie.poster_path,
+      };
+
+      const response: any = await saveService.saveItem(newSaveItem);
+      newSaveItem.id = response.id;
+      context.setSaves((state) => [...state, newSaveItem]);
+    } else {
+      const itemExist = context.saves.find((item) => item.itemId === movie.id);
+      context.setSaves((state) =>
+        state.filter((item) => item.id !== itemExist?.id)
+      );
+      await saveService.unSaveItem(`${itemExist?.id}`);
+    }
+  };
+
   return (
     <Layout dark={true}>
       <div className="movies-page">
@@ -90,7 +126,55 @@ const Movies: React.FC = () => {
           </div>
         </div>
 
-        <div className="right-side"></div>
+        <div className="right-side">
+          <div className="right-side-content">
+            {movies?.results
+              .filter((item) =>
+                item.title.toLowerCase().includes(filters.search.toLowerCase())
+              )
+              .map((item, key) => (
+                <div className="movie-item" key={key}>
+                  <div
+                    style={{
+                      backgroundImage: `url(${TMDB_V3_IMAGE_API}/${item.poster_path})`,
+                    }}
+                  >
+                    {context.user && (
+                      <i
+                        className={`fa-solid fa-heart ${
+                          context.saves
+                            .flatMap((item) => item.itemId)
+                            .includes(item.id) && "active"
+                        }`}
+                        onClick={() => saveMovieHandler(item)}
+                      />
+                    )}
+                  </div>
+                  <p>
+                    {item.original_language} , {item.release_date}
+                  </p>
+                  <h4>{item.title}</h4>
+                  <div className="movie-item-rating">
+                    <div>
+                      <img src={imdbLogo} alt="IMDb" />
+                      {item.vote_average.toFixed(2)}/10
+                    </div>
+                    <div>
+                      <img src={tomatoLogo} alt="Tomato" />
+                      {item.vote_count}
+                    </div>
+                  </div>
+                  <p>
+                    {genres
+                      .filter((genre) => item.genre_ids.includes(genre.id))
+                      .map((item) => item.name)
+                      .join(", ")}
+                  </p>
+                </div>
+              ))}
+          </div>
+          <div>Pagination goes here</div>
+        </div>
       </div>
     </Layout>
   );

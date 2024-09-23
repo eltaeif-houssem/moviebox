@@ -53,3 +53,111 @@
 .movies-page > .left-side > .filters > div > div > label {
   font-weight: 500;
 }
+
+.movies-page > .right-side {
+  width: 100%;
+}
+
+.movies-page > .right-side > .right-side-content {
+  width: 100%;
+  height: calc(100vh - 7rem);
+  overflow-y: scroll;
+  padding: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px 50px;
+}
+
+.movies-page > .right-side > .right-side-content::-webkit-scrollbar {
+  display: none;
+}
+
+.movies-page > .right-side > .right-side-content > .movie-item {
+  width: 200px;
+  margin-bottom: 10px;
+  position: relative;
+  cursor: pointer;
+  transition: box-shadow 0.2s ease-in;
+  min-height: 430px;
+}
+
+.movies-page > .right-side > .right-side-content > .movie-item:hover {
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+}
+
+.movies-page
+  > .right-side
+  > .right-side-content
+  > .movie-item
+  > div:first-child {
+  background-position: center;
+  background-size: cover;
+  height: 250px;
+  display: flex;
+  justify-content: flex-end;
+  padding: 15px 20px;
+  margin-bottom: 10px;
+}
+
+.movies-page
+  > .right-side
+  > .right-side-content
+  > .movie-item
+  > div:first-child
+  > i {
+  cursor: pointer;
+  color: #fff;
+  opacity: 0.8;
+  font-size: 20px;
+  transition: color 0.2s ease-in;
+  height: fit-content;
+}
+
+.movies-page
+  > .right-side
+  > .right-side-content
+  > .movie-item
+  > div:first-child
+  > i:hover {
+  color: #891b36;
+}
+
+.movies-page
+  > .right-side
+  > .right-side-content
+  > .movie-item
+  > div:first-child
+  > i.active {
+  color: #891b36;
+}
+
+.movies-page
+  > .right-side
+  > .right-side-content
+  > .movie-item
+  > div:nth-child(4) {
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.movies-page
+  > .right-side
+  > .right-side-content
+  > .movie-item
+  > div:nth-child(4)
+  > div {
+  display: flex;
+  align-items: center;
+}
+
+.movies-page
+  > .right-side
+  > .right-side-content
+  > .movie-item
+  > div:nth-child(4)
+  > div
+  > img {
+  margin-right: 5px;
+}
