@@ -148,41 +148,52 @@ const Saves: React.FC = () => {
           </div>
         </div>
         <div className="right-side">
-          {context.saves.map((item, key) => (
-            <div className="movie-item" key={key}>
-              <div
-                style={{
-                  backgroundImage: `url(${TMDB_V3_IMAGE_API}/${item.poster_path})`,
-                }}
-              >
-                {context.user && (
-                  <i
-                    className={`fa-solid fa-heart ${
-                      context.saves
-                        .flatMap((item) => item.itemId)
-                        .includes(item.itemId) && "active"
-                    }`}
-                    onClick={() => unSaveMovieHandler(`${item?.id}`)}
-                  />
-                )}
-              </div>
-              <p>
-                {item.language} , {item.date}
-              </p>
-              <h4>{item.title}</h4>
-              <div className="movie-item-rating">
-                <div>
-                  <img src={imdbLogo} alt="IMDb" />
-                  {item.vote_average.toFixed(2)}/10
+          {context.saves
+            .filter((item) =>
+              item.title.toLowerCase().includes(filters.search.toLowerCase())
+            )
+            .filter((item) => {
+              if (filters.movieType.length === 0) {
+                return true;
+              }
+
+              return filters.movieType.includes(item.type);
+            })
+            .map((item, key) => (
+              <div className="movie-item" key={key}>
+                <div
+                  style={{
+                    backgroundImage: `url(${TMDB_V3_IMAGE_API}/${item.poster_path})`,
+                  }}
+                >
+                  {context.user && (
+                    <i
+                      className={`fa-solid fa-heart ${
+                        context.saves
+                          .flatMap((item) => item.itemId)
+                          .includes(item.itemId) && "active"
+                      }`}
+                      onClick={() => unSaveMovieHandler(`${item?.id}`)}
+                    />
+                  )}
                 </div>
-                <div>
-                  <img src={tomatoLogo} alt="Tomato" />
-                  {item.vote_count}
+                <p>
+                  {item.language} , {item.date}
+                </p>
+                <h4>{item.title}</h4>
+                <div className="movie-item-rating">
+                  <div>
+                    <img src={imdbLogo} alt="IMDb" />
+                    {item.vote_average.toFixed(2)}/10
+                  </div>
+                  <div>
+                    <img src={tomatoLogo} alt="Tomato" />
+                    {item.vote_count}
+                  </div>
                 </div>
+                <p>{item.genre}</p>
               </div>
-              <p>{item.genre}</p>
-            </div>
-          ))}
+            ))}
         </div>
       </div>
     </Layout>
