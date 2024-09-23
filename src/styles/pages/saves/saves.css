@@ -59,6 +59,9 @@
   height: calc(100vh - 4rem);
   overflow-y: scroll;
   padding: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px 50px;
 }
 
 .saves-page > .right-side::-webkit-scrollbar {

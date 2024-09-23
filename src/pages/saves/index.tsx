@@ -6,7 +6,6 @@ import * as routePaths from "@constants/routePaths.contant";
 import "@styles/pages/saves/saves.css";
 import TextfieldSearch from "@/components/textfields/TextfieldSearch";
 import saveService from "@/services/save.service";
-import { ISaveItem } from "@/interfaces/save.interface";
 import movieService from "@/services/movie.service";
 import tvService from "@/services/tv.service";
 import { IGenre } from "@/interfaces/tv.interface";
@@ -22,7 +21,6 @@ interface IFilter {
 
 const Saves: React.FC = () => {
   const context = appContext();
-  const [saves, setSaves] = useState<ISaveItem[]>([]);
   const [genres, setGenres] = useState<IGenre[]>([]);
   const [filters, setFilters] = useState<IFilter>({
     search: "",
@@ -37,17 +35,6 @@ const Saves: React.FC = () => {
   const searchTextHandler = (text: string) => {
     setFilters((state) => ({ ...state, search: text }));
   };
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const response: any = await saveService.fetchSaves(
-        `${context.user?.uid}`
-      );
-      setSaves(response);
-    };
-
-    fetchData();
-  }, []);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -161,7 +148,7 @@ const Saves: React.FC = () => {
           </div>
         </div>
         <div className="right-side">
-          {saves.map((item, key) => (
+          {context.saves.map((item, key) => (
             <div className="movie-item" key={key}>
               <div
                 style={{
