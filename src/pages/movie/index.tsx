@@ -15,6 +15,7 @@ import Pagination from "@mui/material/Pagination";
 
 interface IFilter {
   search: string;
+  page: number;
   genderType: number[];
 }
 
@@ -22,14 +23,14 @@ const Movies: React.FC = () => {
   const context = appContext();
   const [movies, setMovies] = useState<IMovieList>();
   const [genres, setGenres] = useState<IGenre[]>([]);
-  const [page, setPage] = useState<number>(1);
   const [filters, setFilters] = useState<IFilter>({
     search: "",
+    page: 1,
     genderType: [],
   });
 
   const searchTextHandler = (text: string) => {
-    setFilters((state) => ({ ...state, search: text }));
+    setFilters((state) => ({ ...state, search: text, page: 1 }));
   };
 
   const genderTypeHandler = (event: any) => {
@@ -37,10 +38,10 @@ const Movies: React.FC = () => {
     if (!filters.genderType.includes(value)) {
       const newGenderType = filters.genderType;
       newGenderType.push(value);
-      setFilters((state) => ({ ...state, genderType: newGenderType }));
+      setFilters((state) => ({ ...state, genderType: newGenderType, page: 1 }));
     } else {
       const newGenderType = filters.genderType.filter((item) => item !== value);
-      setFilters((state) => ({ ...state, genderType: newGenderType }));
+      setFilters((state) => ({ ...state, genderType: newGenderType, page: 1 }));
     }
   };
 
@@ -48,14 +49,14 @@ const Movies: React.FC = () => {
     const fetchData = async () => {
       const response = await movieService.fetchSearchMovie(
         filters.search,
-        page,
+        filters.page,
         filters.genderType
       );
       setMovies(response);
     };
 
     fetchData();
-  }, [filters, page]);
+  }, [filters]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -98,7 +99,7 @@ const Movies: React.FC = () => {
   };
 
   const handlePageChange = (_: any, newPage: number) => {
-    setPage(newPage);
+    setFilters((state) => ({ ...state, page: newPage }));
   };
 
   return (
@@ -183,7 +184,7 @@ const Movies: React.FC = () => {
             <Pagination
               count={movies?.total_pages}
               color="primary"
-              page={page}
+              page={filters.page}
               onChange={handlePageChange}
             />
           </div>
