@@ -9,7 +9,7 @@ export const MOVIE_DETAILS_PAGE = "/movies/:id";
 
 // tv route paths
 export const TVS_PAGE = "/tvs";
-export const TV_DETAILS_PAGE = "/tv/:id";
+export const TV_DETAILS_PAGE = "/tvs/:id";
 
 // other route paths
 export const HOME_PAGE = "/";

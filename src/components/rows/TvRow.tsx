@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import tvService from "@services/tv.service";
 import { ITvGenres, ITv } from "@interfaces/tv.interface";
 import {
@@ -35,6 +35,7 @@ interface Props {
 const TvRow: React.FC<Props> = ({ title, tvGenres }) => {
   const context = appContext();
   const [tvs, setTvs] = useState<ITv[]>([]);
+  const navigate = useNavigate();
   const prevRef = useRef<HTMLDivElement>(null);
   const nextRef = useRef<HTMLDivElement>(null);
 
@@ -139,29 +140,33 @@ const TvRow: React.FC<Props> = ({ title, tvGenres }) => {
                     />
                   )}
                 </div>
-                <p>
-                  {tv.original_language.toUpperCase()} ,{" "}
-                  {new Date(tv.first_air_date)
-                    .toLocaleDateString()
-                    .replace(/\//g, "-")}
-                </p>
-                <h4>{tv.name || tv.original_name}</h4>
-                <div className="tv-row-rating">
-                  <div>
-                    <img src={imdbLogo} alt="IMDb" />
-                    {tv.vote_average.toFixed(2)}/10
+                <div
+                  onClick={() => navigate(`${routePaths.TVS_PAGE}/${tv.id}`)}
+                >
+                  <p>
+                    {tv.original_language.toUpperCase()} ,{" "}
+                    {new Date(tv.first_air_date)
+                      .toLocaleDateString()
+                      .replace(/\//g, "-")}
+                  </p>
+                  <h4>{tv.name || tv.original_name}</h4>
+                  <div className="tv-row-rating">
+                    <div>
+                      <img src={imdbLogo} alt="IMDb" />
+                      {tv.vote_average.toFixed(2)}/10
+                    </div>
+                    <div>
+                      <img src={tomatoLogo} alt="Tomato" />
+                      {tv.vote_count}
+                    </div>
                   </div>
-                  <div>
-                    <img src={tomatoLogo} alt="Tomato" />
-                    {tv.vote_count}
-                  </div>
+                  <p>
+                    {tvGenres?.genres
+                      .filter((item) => tv.genre_ids.includes(item.id))
+                      .map((item) => item.name)
+                      .join(", ")}
+                  </p>
                 </div>
-                <p>
-                  {tvGenres?.genres
-                    .filter((item) => tv.genre_ids.includes(item.id))
-                    .map((item) => item.name)
-                    .join(", ")}
-                </p>
               </div>
             </SwiperSlide>
           ))}

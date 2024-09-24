@@ -139,29 +139,31 @@ const MovieRow: React.FC<Props> = ({ title, movieGenres }) => {
                     />
                   )}
                 </div>
-                <p>
-                  {movie.original_language.toUpperCase()} ,{" "}
-                  {new Date(movie.release_date)
-                    .toLocaleDateString()
-                    .replace(/\//g, "-")}
-                </p>
-                <h4>{movie.title}</h4>
-                <div className="movie-row-rating">
-                  <div>
-                    <img src={imdbLogo} alt="IMDb" />
-                    {movie.vote_average.toFixed(2)}/10
+                <div>
+                  <p>
+                    {movie.original_language.toUpperCase()} ,{" "}
+                    {new Date(movie.release_date)
+                      .toLocaleDateString()
+                      .replace(/\//g, "-")}
+                  </p>
+                  <h4>{movie.title}</h4>
+                  <div className="movie-row-rating">
+                    <div>
+                      <img src={imdbLogo} alt="IMDb" />
+                      {movie.vote_average.toFixed(2)}/10
+                    </div>
+                    <div>
+                      <img src={tomatoLogo} alt="Tomato" />
+                      {movie.vote_count}
+                    </div>
                   </div>
-                  <div>
-                    <img src={tomatoLogo} alt="Tomato" />
-                    {movie.vote_count}
-                  </div>
+                  <p>
+                    {movieGenres?.genres
+                      .filter((item) => movie.genre_ids.includes(item.id))
+                      .map((item) => item.name)
+                      .join(", ")}
+                  </p>
                 </div>
-                <p>
-                  {movieGenres?.genres
-                    .filter((item) => movie.genre_ids.includes(item.id))
-                    .map((item) => item.name)
-                    .join(", ")}
-                </p>
               </div>
             </SwiperSlide>
           ))}
