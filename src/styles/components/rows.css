@@ -100,6 +100,22 @@
   .movie-row-slides
   .movie-row-slide
   > .movie-row-slide-item
+  .movie-row-content {
+  transition: 0.2s ease-in;
+}
+
+.movie-row
+  .movie-row-slides
+  .movie-row-slide
+  > .movie-row-slide-item
+  .movie-row-content:hover {
+  color: #891b36;
+}
+
+.movie-row
+  .movie-row-slides
+  .movie-row-slide
+  > .movie-row-slide-item
   > div:first-child
   > i:hover {
   color: #891b36;
@@ -118,7 +134,8 @@
   .movie-row-slides
   .movie-row-slide
   > .movie-row-slide-item
-  > div:nth-child(4) {
+  > .movie-row-content
+  > div {
   margin-top: 5px;
   display: flex;
   align-items: center;
@@ -129,7 +146,8 @@
   .movie-row-slides
   .movie-row-slide
   > .movie-row-slide-item
-  > div:nth-child(4)
+  > .movie-row-content
+  > div
   > div {
   display: flex;
   align-items: center;
@@ -139,7 +157,8 @@
   .movie-row-slides
   .movie-row-slide
   > .movie-row-slide-item
-  > div:nth-child(4)
+  > .movie-row-content
+  > div
   > div
   > img {
   margin-right: 5px;

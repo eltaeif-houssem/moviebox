@@ -144,6 +144,7 @@ const MovieRow: React.FC<Props> = ({ title, movieGenres }) => {
                   onClick={() =>
                     navigate(`${routePaths.MOVIES_PAGE}/${movie.id}`)
                   }
+                  className="movie-row-content"
                 >
                   <p>
                     {movie.original_language.toUpperCase()} ,{" "}
