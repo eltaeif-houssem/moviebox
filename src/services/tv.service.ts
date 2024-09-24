@@ -115,9 +115,13 @@ class TvService {
     }
   }
 
-  async fetchSearchTv(query: string, page: number = 1): Promise<ITvList> {
+  async fetchSearchTv(
+    query: string,
+    page: number = 1,
+    genres: number[]
+  ): Promise<ITvList> {
     try {
-      const { data } = await tvApi.getSearchTv(query, page);
+      const { data } = await tvApi.getSearchTv(query, page, genres);
       return data;
     } catch (error) {
       console.error(error);
