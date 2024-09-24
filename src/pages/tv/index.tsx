@@ -11,6 +11,8 @@ import { ISaveItem } from "@/interfaces/save.interface";
 import Pagination from "@mui/material/Pagination";
 import tvService from "@/services/tv.service";
 import "@styles/pages/tv/tv.css";
+import { useNavigate } from "react-router-dom";
+import * as routePaths from "@constants/routePaths.contant";
 
 interface IFilter {
   search: string;
@@ -22,6 +24,7 @@ const Tvs: React.FC = () => {
   const context = appContext();
   const [tvs, setTvs] = useState<ITvList>();
   const [genres, setGenres] = useState<IGenre[]>([]);
+  const navigate = useNavigate();
   const [filters, setFilters] = useState<IFilter>({
     search: "",
     page: 1,
@@ -156,26 +159,32 @@ const Tvs: React.FC = () => {
                       />
                     )}
                   </div>
-                  <p>
-                    {item.original_language} , {item.first_air_date}
-                  </p>
-                  <h4>{item.name}</h4>
-                  <div className="tv-item-rating">
-                    <div>
-                      <img src={imdbLogo} alt="IMDb" />
-                      {item.vote_average.toFixed(2)}/10
+                  <div
+                    onClick={() =>
+                      navigate(`${routePaths.TVS_PAGE}/${item.id}`)
+                    }
+                  >
+                    <p>
+                      {item.original_language} , {item.first_air_date}
+                    </p>
+                    <h4>{item.name}</h4>
+                    <div className="tv-item-rating">
+                      <div>
+                        <img src={imdbLogo} alt="IMDb" />
+                        {item.vote_average.toFixed(2)}/10
+                      </div>
+                      <div>
+                        <img src={tomatoLogo} alt="Tomato" />
+                        {item.vote_count}
+                      </div>
                     </div>
-                    <div>
-                      <img src={tomatoLogo} alt="Tomato" />
-                      {item.vote_count}
-                    </div>
+                    <p>
+                      {genres
+                        .filter((genre) => item.genre_ids.includes(genre.id))
+                        .map((item) => item.name)
+                        .join(", ")}
+                    </p>
                   </div>
-                  <p>
-                    {genres
-                      .filter((genre) => item.genre_ids.includes(genre.id))
-                      .map((item) => item.name)
-                      .join(", ")}
-                  </p>
                 </div>
               ))}
           </div>
