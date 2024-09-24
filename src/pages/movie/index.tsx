@@ -161,6 +161,7 @@ const Movies: React.FC = () => {
                     )}
                   </div>
                   <div
+                    className="movie-item-content"
                     onClick={() =>
                       navigate(`${routePaths.MOVIES_PAGE}/${item.id}`)
                     }

@@ -136,7 +136,24 @@
   > .right-side
   > .right-side-content
   > .movie-item
-  > div:nth-child(4) {
+  > .movie-item-content {
+  transition: 0.2s ease-in;
+}
+
+.movies-page
+  > .right-side
+  > .right-side-content
+  > .movie-item
+  > .movie-item-content:hover {
+  color: #891b36;
+}
+
+.movies-page
+  > .right-side
+  > .right-side-content
+  > .movie-item
+  > .movie-item-content
+  > div {
   margin-top: 5px;
   display: flex;
   align-items: center;
@@ -147,7 +164,8 @@
   > .right-side
   > .right-side-content
   > .movie-item
-  > div:nth-child(4)
+  > .movie-item-content
+  > div
   > div {
   display: flex;
   align-items: center;
@@ -157,7 +175,8 @@
   > .right-side
   > .right-side-content
   > .movie-item
-  > div:nth-child(4)
+  > .movie-item-content
+  > div
   > div
   > img {
   margin-right: 5px;
