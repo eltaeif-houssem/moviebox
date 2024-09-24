@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import movieService from "@services/movie.service";
 import { IMovieItem, IMovieGenres } from "@interfaces/movie.interface";
 import {
@@ -35,6 +35,7 @@ interface Props {
 const MovieRow: React.FC<Props> = ({ title, movieGenres }) => {
   const context = appContext();
   const [movies, setMovies] = useState<IMovieItem[]>([]);
+  const navigate = useNavigate();
   const prevRef = useRef<HTMLDivElement>(null);
   const nextRef = useRef<HTMLDivElement>(null);
 
@@ -139,7 +140,11 @@ const MovieRow: React.FC<Props> = ({ title, movieGenres }) => {
                     />
                   )}
                 </div>
-                <div>
+                <div
+                  onClick={() =>
+                    navigate(`${routePaths.MOVIES_PAGE}/${movie.id}`)
+                  }
+                >
                   <p>
                     {movie.original_language.toUpperCase()} ,{" "}
                     {new Date(movie.release_date)
