@@ -160,6 +160,7 @@ const Tvs: React.FC = () => {
                     )}
                   </div>
                   <div
+                    className="tv-item-content"
                     onClick={() =>
                       navigate(`${routePaths.TVS_PAGE}/${item.id}`)
                     }
