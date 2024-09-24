@@ -3,7 +3,6 @@ import TextfieldSearch from "@components/textfields/TextfieldSearch";
 import { appContext } from "@context/index";
 import { IGenre, ITv, ITvList } from "@interfaces/tv.interface";
 import Layout from "@components/layout";
-import "@styles/pages/movie/movie.css";
 import imdbLogo from "@assets/imdb.png";
 import tomatoLogo from "@assets/tomato.png";
 import saveService from "@/services/save.service";
@@ -11,6 +10,7 @@ import { TMDB_V3_IMAGE_API } from "@/constants/apiUrls.constant";
 import { ISaveItem } from "@/interfaces/save.interface";
 import Pagination from "@mui/material/Pagination";
 import tvService from "@/services/tv.service";
+import "@styles/pages/tv/tv.css";
 
 interface IFilter {
   search: string;
@@ -103,7 +103,7 @@ const Tvs: React.FC = () => {
 
   return (
     <Layout dark={true}>
-      <div className="movies-page">
+      <div className="tvs-page">
         <div className="left-side">
           <div className="search-box">
             <p>Search tvs</p>
@@ -139,7 +139,7 @@ const Tvs: React.FC = () => {
                 item.name.toLowerCase().includes(filters.search.toLowerCase())
               )
               .map((item, key) => (
-                <div className="movie-item" key={key}>
+                <div className="tv-item" key={key}>
                   <div
                     style={{
                       backgroundImage: `url(${TMDB_V3_IMAGE_API}/${item.poster_path})`,
@@ -160,7 +160,7 @@ const Tvs: React.FC = () => {
                     {item.original_language} , {item.first_air_date}
                   </p>
                   <h4>{item.name}</h4>
-                  <div className="movie-item-rating">
+                  <div className="tv-item-rating">
                     <div>
                       <img src={imdbLogo} alt="IMDb" />
                       {item.vote_average.toFixed(2)}/10
