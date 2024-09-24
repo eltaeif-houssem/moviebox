@@ -141,6 +141,7 @@ const TvRow: React.FC<Props> = ({ title, tvGenres }) => {
                   )}
                 </div>
                 <div
+                  className="tv-row-content"
                   onClick={() => navigate(`${routePaths.TVS_PAGE}/${tv.id}`)}
                 >
                   <p>
