@@ -1,7 +1,6 @@
 import Layout from "@/components/layout";
-import { appContext } from "@/context";
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import "@styles/pages/movie/movieDetails.css";
 import movieService from "@/services/movie.service";
 import {
@@ -18,18 +17,15 @@ import InfiniteSpinner from "@/components/spinners/InfiniteSpinner";
 import TrailerModal from "./TrailerModal";
 
 const MovieDetails: React.FC = () => {
-  const context = appContext();
   const [loading, setLoading] = useState<boolean>(true);
   const [movie, setMovie] = useState<IMovieDetails>();
   const [trailers, setTrailers] = useState<IMovieTrailerList>();
   const [trailer, setTrailer] = useState<IMovieTrailer | null>(null);
-  const navigate = useNavigate();
   const { id } = useParams();
 
   useEffect(() => {
     const fetchData = async () => {
       const movieDetails = await movieService.fetchMovieDetails(Number(id));
-      console.log(movieDetails);
       const movieTrailers = await movieService.fetchMovieTrailers(Number(id));
       setMovie(movieDetails);
       setTrailers(movieTrailers);
