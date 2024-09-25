@@ -108,6 +108,18 @@ const MovieDetails: React.FC = () => {
                 <span>Adult:</span> {movie?.adult ? "yes" : "no"}
               </p>
             </div>
+            <h2>Trailers</h2>
+            <div className="trailers">
+              {trailers?.results.map((item) => (
+                <div
+                  style={{
+                    backgroundImage: `url(https://img.youtube.com/vi/${item.key}/hqdefault.jpg)`,
+                  }}
+                >
+                  <i className="fa-solid fa-play" />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>

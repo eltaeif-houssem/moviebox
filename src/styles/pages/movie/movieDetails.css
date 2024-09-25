@@ -98,3 +98,30 @@
   font-weight: bold;
   margin-right: 10px;
 }
+
+.movie-details-page > .movie-content > .bottom > .trailers {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 2rem;
+  padding: 0px 10px;
+}
+
+.movie-details-page > .movie-content > .bottom > .trailers > div {
+  width: 200px;
+  height: 100px;
+  background-position: center;
+  background-size: cover;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 32px;
+  transition: 0.2s ease-in;
+}
+
+.movie-details-page > .movie-content > .bottom > .trailers > div:hover {
+  cursor: pointer;
+  color: #891b36;
+}
