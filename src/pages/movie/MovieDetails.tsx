@@ -65,13 +65,21 @@ const MovieDetails: React.FC = () => {
 
               <div>
                 <img src={coinLogo} alt="coin_logo" width="20px" />
-                <p>{formatMoney(movie?.revenue!)}$</p>
+                <p>{formatMoney(movie?.budget!)}$</p>
               </div>
             </div>
           </div>
           <div className="bottom">
             <h2>Overview</h2>
             <p className="overview">{movie?.overview}</p>
+            <h2>Production Companies</h2>
+            <div className="companies">
+              {movie?.production_companies
+                .filter((company) => company.logo_path !== null)
+                .map((company) => (
+                  <img src={`${TMDB_V3_IMAGE_API}/${company.logo_path}`} />
+                ))}
+            </div>
           </div>
         </div>
       </div>
