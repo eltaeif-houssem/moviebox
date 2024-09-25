@@ -80,6 +80,34 @@ const MovieDetails: React.FC = () => {
                   <img src={`${TMDB_V3_IMAGE_API}/${company.logo_path}`} />
                 ))}
             </div>
+            <h2>Other Infos</h2>
+            <div className="infos">
+              <p>
+                <span>Production Countries:</span>{" "}
+                {movie?.production_countries
+                  .flatMap((item) => item.name)
+                  .join(", ")}
+              </p>
+              <p>
+                <span>Popularity:</span>{" "}
+                {movie?.popularity.toString().replace(".", "")} people
+              </p>
+              <p>
+                <span>Release Date:</span> {movie?.release_date}
+              </p>
+              <p>
+                <span>Revenue:</span> {formatMoney(movie?.revenue!)}$
+              </p>
+              <p>
+                <span>Budget:</span> {formatMoney(movie?.budget!)}$
+              </p>
+              <p>
+                <span>Status:</span> {movie?.status}
+              </p>
+              <p>
+                <span>Adult:</span> {movie?.adult ? "yes" : "no"}
+              </p>
+            </div>
           </div>
         </div>
       </div>

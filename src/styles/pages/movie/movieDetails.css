@@ -77,10 +77,24 @@
   display: flex;
   flex-wrap: wrap;
   gap: 1rem 2rem;
+  margin-bottom: 15px;
 }
 
 .movie-details-page > .movie-content > .bottom > .companies > img {
   width: 250px;
   height: 80px;
   border-radius: 10px;
+}
+
+.movie-details-page > .movie-content > .bottom > .infos {
+  padding: 0px 10px;
+}
+
+.movie-details-page > .movie-content > .bottom > .infos > p {
+  color: #444;
+}
+
+.movie-details-page > .movie-content > .bottom > .infos > p > span {
+  font-weight: bold;
+  margin-right: 10px;
 }
