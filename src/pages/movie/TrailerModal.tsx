@@ -22,7 +22,7 @@ const TrailerModal: React.FC<Props> = (props) => {
       <div className="overlay" onClick={onClose} />
       <div className="content">
         <i className="fa-solid fa-xmark" onClick={onClose} />
-        <h1>{trailer?.name}</h1>
+        <h2>{trailer?.name}</h2>
         <YouTube videoId={`${trailer?.key}`} opts={trailerListItem} />
       </div>
     </div>
