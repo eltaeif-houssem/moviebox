@@ -22,3 +22,44 @@
   background-color: #fff;
   padding: 3px;
 }
+
+.movie-details-page > .movie-content {
+  position: relative;
+  margin: 0px 40px;
+  width: 100%;
+}
+
+.movie-details-page > .movie-content > .top {
+  position: absolute;
+  left: 280px;
+  width: fit-content;
+}
+
+.movie-details-page > .movie-content > .top > h4 {
+  color: #555;
+}
+
+.movie-details-page > .movie-content > .top > div {
+  display: flex;
+  align-items: center;
+}
+
+.movie-details-page > .movie-content > .top > div > div {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.movie-details-page > .movie-content > .top > div > div:first-child {
+  margin-right: 15px;
+}
+
+.movie-details-page > .movie-content > .top > div > div > img {
+  margin-right: 5px;
+}
+
+.movie-details-page > .movie-content > .bottom {
+  position: absolute;
+  width: 95%;
+  margin-top: 150px;
+}

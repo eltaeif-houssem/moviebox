@@ -6,6 +6,8 @@ import "@styles/pages/movie/movieDetails.css";
 import movieService from "@/services/movie.service";
 import { IMovieDetails, IMovieTrailerList } from "@/interfaces/movie.interface";
 import { TMDB_V3_IMAGE_API } from "@constants/apiUrls.constant";
+import imdbLogo from "@assets/imdb.png";
+import tomatoLogo from "@assets/tomato.png";
 
 const MovieDetails: React.FC = () => {
   const context = appContext();
@@ -34,6 +36,23 @@ const MovieDetails: React.FC = () => {
           }}
         >
           <img src={`${TMDB_V3_IMAGE_API}/${movie?.poster_path}`} alt="" />
+        </div>
+        <div className="movie-content">
+          <div className="top">
+            <h1>{movie?.title || movie?.original_title}</h1>
+            <h4>{movie?.tagline}</h4>
+            <div>
+              <div>
+                <img src={imdbLogo} alt="imdb_logo" />
+                <p>{movie?.vote_average.toFixed(2)}/10</p>
+              </div>
+
+              <div>
+                <img src={tomatoLogo} alt="tomato_logo" />
+                <p>{movie?.vote_count}</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </Layout>
