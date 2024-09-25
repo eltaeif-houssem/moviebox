@@ -4,19 +4,25 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import "@styles/pages/movie/movieDetails.css";
 import movieService from "@/services/movie.service";
-import { IMovieDetails, IMovieTrailerList } from "@/interfaces/movie.interface";
+import {
+  IMovieDetails,
+  IMovieTrailer,
+  IMovieTrailerList,
+} from "@/interfaces/movie.interface";
 import { TMDB_V3_IMAGE_API } from "@constants/apiUrls.constant";
 import imdbLogo from "@assets/imdb.png";
 import tomatoLogo from "@assets/tomato.png";
 import coinLogo from "@assets/coin.png";
 import { formatMoney } from "@/utils/string.util";
 import InfiniteSpinner from "@/components/spinners/InfiniteSpinner";
+import TrailerModal from "./TrailerModal";
 
 const MovieDetails: React.FC = () => {
   const context = appContext();
   const [loading, setLoading] = useState<boolean>(true);
   const [movie, setMovie] = useState<IMovieDetails>();
   const [trailers, setTrailers] = useState<IMovieTrailerList>();
+  const [trailer, setTrailer] = useState<IMovieTrailer | null>(null);
   const navigate = useNavigate();
   const { id } = useParams();
 
@@ -32,6 +38,10 @@ const MovieDetails: React.FC = () => {
 
     fetchData();
   }, []);
+
+  const closeTrailerHandler = () => {
+    setTrailer(null);
+  };
 
   if (loading) {
     return <InfiniteSpinner />;
@@ -119,6 +129,7 @@ const MovieDetails: React.FC = () => {
                   style={{
                     backgroundImage: `url(https://img.youtube.com/vi/${item.key}/hqdefault.jpg)`,
                   }}
+                  onClick={() => setTrailer(item)}
                 >
                   <i className="fa-solid fa-play" />
                 </div>
@@ -126,6 +137,9 @@ const MovieDetails: React.FC = () => {
             </div>
           </div>
         </div>
+        {trailer && (
+          <TrailerModal trailer={trailer} onClose={closeTrailerHandler} />
+        )}
       </div>
     </Layout>
   );

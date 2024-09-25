@@ -125,3 +125,52 @@
   cursor: pointer;
   color: #891b36;
 }
+
+.movie-details-page > .trailer-modal {
+  z-index: 9999;
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+}
+
+.movie-details-page > .trailer-modal > .overlay {
+  background-color: rgba(0, 0, 0, 0.3);
+  width: 100%;
+  height: 100vh;
+}
+
+.movie-details-page > .trailer-modal > .content {
+  position: absolute;
+  z-index: 99999;
+  background-color: #fff;
+  width: 650px;
+  height: 550px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.movie-details-page > .trailer-modal > .content > i {
+  cursor: pointer;
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  font-size: 18px;
+  transition: 0.2s ease-in;
+}
+
+.movie-details-page > .trailer-modal > .content > i:hover {
+  color: #891b36;
+}
+
+.movie-details-page > .trailer-modal > .content > h1 {
+  margin-bottom: 5px;
+}
