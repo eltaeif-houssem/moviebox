@@ -83,6 +83,10 @@ const MovieDetails: React.FC = () => {
             <h2>Other Infos</h2>
             <div className="infos">
               <p>
+                <span>Category:</span>{" "}
+                {movie?.genres.flatMap((item) => item.name).join(", ")} people
+              </p>
+              <p>
                 <span>Production Countries:</span>{" "}
                 {movie?.production_countries
                   .flatMap((item) => item.name)
