@@ -50,7 +50,7 @@
   align-items: center;
 }
 
-.movie-details-page > .movie-content > .top > div > div:first-child {
+.movie-details-page > .movie-content > .top > div > div {
   margin-right: 15px;
 }
 
@@ -62,4 +62,9 @@
   position: absolute;
   width: 95%;
   margin-top: 150px;
+}
+
+.movie-details-page > .movie-content > .bottom > .overview {
+  width: 800px;
+  margin-left: 10px;
 }

@@ -8,9 +8,13 @@ import { IMovieDetails, IMovieTrailerList } from "@/interfaces/movie.interface";
 import { TMDB_V3_IMAGE_API } from "@constants/apiUrls.constant";
 import imdbLogo from "@assets/imdb.png";
 import tomatoLogo from "@assets/tomato.png";
+import coinLogo from "@assets/coin.png";
+import { formatMoney } from "@/utils/string.util";
+import InfiniteSpinner from "@/components/spinners/InfiniteSpinner";
 
 const MovieDetails: React.FC = () => {
   const context = appContext();
+  const [loading, setLoading] = useState<boolean>(true);
   const [movie, setMovie] = useState<IMovieDetails>();
   const [trailers, setTrailers] = useState<IMovieTrailerList>();
   const navigate = useNavigate();
@@ -19,13 +23,20 @@ const MovieDetails: React.FC = () => {
   useEffect(() => {
     const fetchData = async () => {
       const movieDetails = await movieService.fetchMovieDetails(Number(id));
+      console.log(movieDetails);
       const movieTrailers = await movieService.fetchMovieTrailers(Number(id));
       setMovie(movieDetails);
       setTrailers(movieTrailers);
+      setLoading(false);
     };
 
     fetchData();
   }, []);
+
+  if (loading) {
+    return <InfiniteSpinner />;
+  }
+
   return (
     <Layout dark={true}>
       <div className="movie-details-page">
@@ -51,7 +62,16 @@ const MovieDetails: React.FC = () => {
                 <img src={tomatoLogo} alt="tomato_logo" />
                 <p>{movie?.vote_count}</p>
               </div>
+
+              <div>
+                <img src={coinLogo} alt="coin_logo" width="20px" />
+                <p>{formatMoney(movie?.revenue!)}$</p>
+              </div>
             </div>
+          </div>
+          <div className="bottom">
+            <h2>Overview</h2>
+            <p className="overview">{movie?.overview}</p>
           </div>
         </div>
       </div>
