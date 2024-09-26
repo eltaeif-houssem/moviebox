@@ -130,3 +130,21 @@ export interface IMovieReviews {
 export interface IMovieGenres {
   genres: IGenre[];
 }
+
+interface IMovieCredit {
+  id: number;
+  adult: boolean;
+  gender: number;
+  known_for_department: string;
+  name: string;
+  original_name: string;
+  popularity: number;
+  profile_path: string;
+  character: string;
+}
+
+export interface IMovieCredits {
+  id: number;
+  cast: IMovieCredit[];
+  crew: IMovieCredit[];
+}

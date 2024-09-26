@@ -8,6 +8,7 @@ import {
   IMovieImages,
   IMovieReviews,
   IMovieGenres,
+  IMovieCredits,
 } from "@interfaces/movie.interface";
 
 /**
@@ -153,3 +154,15 @@ export const getMoviesByGenre = async (
   axios.get(
     `/discover/movie?with_genres=${genreId}&language=en-US&page=${page}`
   );
+
+/**
+ * @GET movie credits
+ * @param movieId: movieId
+ * @param page: number
+ * @returns {AxiosResponse<IMovieCredits>} object
+ */
+export const getMovieCredits = async (
+  movieId: number,
+  page: number = 1
+): Promise<AxiosResponse<IMovieCredits>> =>
+  axios.get(`/movie/${movieId}/credits?page=${page}`);
