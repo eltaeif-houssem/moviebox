@@ -72,7 +72,7 @@ const SimilarMovies: React.FC<Props> = ({ movieId }) => {
 
   return (
     <div className="similar-movies-row">
-      <div className="movie-row-header">
+      <div className="similar-movies-row-header">
         <h2>Similar Movies</h2>
         <Link to={routePaths.MOVIES_PAGE}>
           See more <i className="fa-solid fa-chevron-right" />
@@ -89,11 +89,11 @@ const SimilarMovies: React.FC<Props> = ({ movieId }) => {
             nextEl: nextRef.current,
           }}
           touchStartPreventDefault={false}
-          className="mySwiper movie-row-slides"
+          className="mySwiper similar-movies-row-slides"
         >
           {movies?.results.map((movie, key) => (
-            <SwiperSlide className="movie-row-slide" key={key}>
-              <div className="movie-row-slide-item">
+            <SwiperSlide className="similar-movies-row-slide" key={key}>
+              <div className="similar-movies-row-slide-item">
                 <div
                   style={{
                     backgroundImage: `url(${TMDB_V3_IMAGE_API}/${movie.poster_path})`,
@@ -114,7 +114,7 @@ const SimilarMovies: React.FC<Props> = ({ movieId }) => {
                   onClick={() =>
                     navigate(`${routePaths.MOVIES_PAGE}/${movie.id}`)
                   }
-                  className="movie-row-content"
+                  className="similar-movies-row-content"
                 >
                   <p>
                     {movie.original_language.toUpperCase()} ,{" "}
@@ -123,7 +123,7 @@ const SimilarMovies: React.FC<Props> = ({ movieId }) => {
                       .replace(/\//g, "-")}
                   </p>
                   <h4>{movie.title}</h4>
-                  <div className="movie-row-rating">
+                  <div className="similar-movies-row-rating">
                     <div>
                       <img src={imdbLogo} alt="IMDb" />
                       {movie.vote_average.toFixed(2)}/10
