@@ -1,7 +1,12 @@
 import React from "react";
+import "@styles/components/rows.css";
 
-const SimilarMovies = () => {
-  return <div>SimilarMovies</div>;
+interface Props {
+  movieId: number;
+}
+
+const SimilarMovies: React.FC<Props> = ({ movieId }) => {
+  return <div className="similar-movies-row">SimilarMovies</div>;
 };
 
 export default SimilarMovies;
