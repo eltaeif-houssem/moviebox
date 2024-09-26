@@ -26,6 +26,9 @@ const MovieDetails: React.FC = () => {
 
   useEffect(() => {
     const fetchData = async () => {
+      if (!loading) {
+        setLoading(true);
+      }
       const movieDetails = await movieService.fetchMovieDetails(Number(id));
       const movieTrailers = await movieService.fetchMovieTrailers(Number(id));
       setMovie(movieDetails);
@@ -34,7 +37,7 @@ const MovieDetails: React.FC = () => {
     };
 
     fetchData();
-  }, []);
+  }, [id]);
 
   const closeTrailerHandler = () => {
     setTrailer(null);
