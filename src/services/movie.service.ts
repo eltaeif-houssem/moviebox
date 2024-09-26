@@ -6,6 +6,7 @@ import {
   IMovieImages,
   IMovieReviews,
   IMovieGenres,
+  IMovieCredits,
 } from "../interfaces/movie.interface";
 import * as movieApi from "@apis/movie.api";
 
@@ -153,6 +154,19 @@ class MovieService {
     } catch (error) {
       console.error(error);
       return {} as IMovieList;
+    }
+  }
+
+  async fetchMovieCredits(
+    movieId: number,
+    page: number = 1
+  ): Promise<IMovieCredits> {
+    try {
+      const { data } = await movieApi.getMovieCredits(movieId, page);
+      return data;
+    } catch (error) {
+      console.error(error);
+      return {} as IMovieCredits;
     }
   }
 }
