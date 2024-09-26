@@ -15,6 +15,7 @@ import coinLogo from "@assets/coin.png";
 import { formatMoney } from "@/utils/string.util";
 import InfiniteSpinner from "@/components/spinners/InfiniteSpinner";
 import TrailerModal from "./TrailerModal";
+import SimilarMovies from "@/components/rows/SimilarMovies";
 
 const MovieDetails: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(true);
@@ -131,6 +132,7 @@ const MovieDetails: React.FC = () => {
                 </div>
               ))}
             </div>
+            <SimilarMovies movieId={movie?.id!} />
           </div>
         </div>
         {trailer && (

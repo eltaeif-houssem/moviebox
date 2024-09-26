@@ -19,7 +19,6 @@ import tomatoLogo from "@assets/tomato.png";
 
 interface Props {
   movieId: number;
-  movieGenres?: IMovieGenres;
 }
 
 const SimilarMovies: React.FC<Props> = ({ movieId }) => {
