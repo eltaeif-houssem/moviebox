@@ -141,8 +141,12 @@ const MovieDetails: React.FC = () => {
                 </div>
               ))}
             </div>
-            <ActorsRow credits={credits!} />
-            <SimilarMovies movieId={movie?.id!} />
+            <div style={{ zIndex: 99999 }}>
+              <ActorsRow credits={credits!} />
+            </div>
+            <div style={{ zIndex: 99999 }}>
+              <SimilarMovies movieId={movie?.id!} />
+            </div>
           </div>
         </div>
         {trailer && (
