@@ -12,7 +12,7 @@ import { TMDB_V3_IMAGE_API } from "@/constants/apiUrls.constant";
 import { appContext } from "@/context";
 import saveService from "@/services/save.service";
 import { ISaveItem } from "@/interfaces/save.interface";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import * as routePaths from "@constants/routePaths.contant";
 import imdbLogo from "@assets/imdb.png";
 import tomatoLogo from "@assets/tomato.png";
@@ -72,6 +72,12 @@ const SimilarMovies: React.FC<Props> = ({ movieId }) => {
 
   return (
     <div className="similar-movies-row">
+      <div className="movie-row-header">
+        <h2>Similar Movies</h2>
+        <Link to={routePaths.MOVIES_PAGE}>
+          See more <i className="fa-solid fa-chevron-right" />
+        </Link>
+      </div>
       <div className="swiper-container">
         <Swiper
           slidesPerView={6}
