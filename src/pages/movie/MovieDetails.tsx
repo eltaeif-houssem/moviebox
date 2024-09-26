@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import "@styles/pages/movie/movieDetails.css";
 import movieService from "@/services/movie.service";
 import {
+  IMovieCredits,
   IMovieDetails,
   IMovieTrailer,
   IMovieTrailerList,
@@ -22,6 +23,7 @@ const MovieDetails: React.FC = () => {
   const [movie, setMovie] = useState<IMovieDetails>();
   const [trailers, setTrailers] = useState<IMovieTrailerList>();
   const [trailer, setTrailer] = useState<IMovieTrailer | null>(null);
+  const [credits, setCredits] = useState<IMovieCredits>();
   const { id } = useParams();
 
   useEffect(() => {
@@ -31,6 +33,9 @@ const MovieDetails: React.FC = () => {
       }
       const movieDetails = await movieService.fetchMovieDetails(Number(id));
       const movieTrailers = await movieService.fetchMovieTrailers(Number(id));
+      const movieCredits = await movieService.fetchMovieCredits(Number(id));
+
+      setCredits(movieCredits);
       setMovie(movieDetails);
       setTrailers(movieTrailers);
       setLoading(false);
