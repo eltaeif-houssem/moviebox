@@ -14,8 +14,8 @@ const ActorsRow: React.FC<Props> = ({ credits }) => {
   const nextRef = useRef<HTMLDivElement>(null);
 
   return (
-    <div className="similar-movies-row">
-      <div className="similar-movies-row-header">
+    <div className="actors-row">
+      <div className="actors-row-header">
         <h2>Actors</h2>
       </div>
       <div className="swiper-container">
@@ -29,17 +29,17 @@ const ActorsRow: React.FC<Props> = ({ credits }) => {
             nextEl: nextRef.current,
           }}
           touchStartPreventDefault={false}
-          className="mySwiper similar-movies-row-slides"
+          className="mySwiper actors-row-slides"
         >
           {credits?.cast.map((actor, key) => (
-            <SwiperSlide className="similar-movies-row-slide" key={key}>
-              <div className="similar-movies-row-slide-item">
+            <SwiperSlide className="actors-row-slide" key={key}>
+              <div className="actors-row-slide-item">
                 <div
                   style={{
                     backgroundImage: `url(${TMDB_V3_IMAGE_API}/${actor.profile_path})`,
                   }}
                 />
-                <div className="similar-movies-row-content">
+                <div className="actors-row-content">
                   <h4>{actor.name || actor.original_name}</h4>
                   <p>
                     <span>Character:</span> {actor.character}

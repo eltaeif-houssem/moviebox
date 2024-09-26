@@ -17,6 +17,7 @@ import { formatMoney } from "@/utils/string.util";
 import InfiniteSpinner from "@/components/spinners/InfiniteSpinner";
 import TrailerModal from "./TrailerModal";
 import SimilarMovies from "@/components/rows/SimilarMovies";
+import ActorsRow from "@/components/rows/ActorsRow";
 
 const MovieDetails: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(true);
@@ -140,6 +141,7 @@ const MovieDetails: React.FC = () => {
                 </div>
               ))}
             </div>
+            <ActorsRow credits={credits!} />
             <SimilarMovies movieId={movie?.id!} />
           </div>
         </div>
