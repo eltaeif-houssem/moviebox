@@ -569,38 +569,6 @@
   .actors-row-slides
   .actors-row-slide
   > .actors-row-slide-item
-  > div:first-child
-  > i {
-  cursor: pointer;
-  color: #fff;
-  opacity: 0.8;
-  font-size: 20px;
-  transition: color 0.2s ease-in;
-  height: fit-content;
-}
-
-.actors-row
-  .actors-row-slides
-  .actors-row-slide
-  > .actors-row-slide-item
-  > div:first-child
-  > i:hover {
-  color: #891b36;
-}
-
-.actors-row
-  .actors-row-slides
-  .actors-row-slide
-  > .actors-row-slide-item
-  > div:first-child
-  > i.active {
-  color: #891b36;
-}
-
-.actors-row
-  .actors-row-slides
-  .actors-row-slide
-  > .actors-row-slide-item
   > .actors-row-content {
   transition: 0.2s ease-in;
 }
@@ -653,7 +621,6 @@
   > .actors-row-slide-item
   > .actors-row-content
   > p {
-  color: #444;
   font-size: 15px;
 }
 
