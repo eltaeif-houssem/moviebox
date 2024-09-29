@@ -86,8 +86,11 @@ const TvDetails: React.FC = () => {
             <div className="companies">
               {tv?.production_companies
                 .filter((company) => company.logo_path !== null)
-                .map((company) => (
-                  <img src={`${TMDB_V3_IMAGE_API}/${company.logo_path}`} />
+                .map((company, key) => (
+                  <img
+                    src={`${TMDB_V3_IMAGE_API}/${company.logo_path}`}
+                    key={key}
+                  />
                 ))}
             </div>
             <h2>Other Infos</h2>
@@ -118,12 +121,13 @@ const TvDetails: React.FC = () => {
             </div>
             <h2>Trailers</h2>
             <div className="trailers">
-              {trailers?.results.map((item) => (
+              {trailers?.results.map((item, key) => (
                 <div
                   style={{
                     backgroundImage: `url(https://img.youtube.com/vi/${item.key}/hqdefault.jpg)`,
                   }}
                   onClick={() => setTrailer(item)}
+                  key={key}
                 >
                   <i className="fa-solid fa-play" />
                 </div>
