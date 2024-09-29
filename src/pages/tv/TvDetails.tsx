@@ -18,10 +18,12 @@ import InfiniteSpinner from "@/components/spinners/InfiniteSpinner";
 import TrailerModal from "./TrailerModal";
 import SimilarMovies from "@/components/rows/SimilarMovies";
 import ActorsRow from "@/components/rows/ActorsRow";
+import tvService from "@/services/tv.service";
+import { ITvDetails } from "@/interfaces/tv.interface";
 
 const TvDetails: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(true);
-  const [movie, setMovie] = useState<IMovieDetails>();
+  const [tv, setTv] = useState<ITvDetails>();
   const [trailers, setTrailers] = useState<IMovieTrailerList>();
   const [trailer, setTrailer] = useState<IMovieTrailer | null>(null);
   const [credits, setCredits] = useState<IMovieCredits>();
@@ -32,12 +34,12 @@ const TvDetails: React.FC = () => {
       if (!loading) {
         setLoading(true);
       }
-      const movieDetails = await movieService.fetchMovieDetails(Number(id));
-      const movieTrailers = await movieService.fetchMovieTrailers(Number(id));
+      const movieDetails = await tvService.fetchTvDetails(Number(id));
+      const movieTrailers = await tvService.fetchTvTrailers(Number(id));
       const movieCredits = await movieService.fetchMovieCredits(Number(id));
 
       setCredits(movieCredits);
-      setMovie(movieDetails);
+      setTv(movieDetails);
       setTrailers(movieTrailers);
       setLoading(false);
     };
@@ -59,38 +61,33 @@ const TvDetails: React.FC = () => {
         <div
           className="movie-cover"
           style={{
-            backgroundImage: `url(${TMDB_V3_IMAGE_API}/${movie?.backdrop_path})`,
+            backgroundImage: `url(${TMDB_V3_IMAGE_API}/${tv?.backdrop_path})`,
           }}
         >
-          <img src={`${TMDB_V3_IMAGE_API}/${movie?.poster_path}`} alt="" />
+          <img src={`${TMDB_V3_IMAGE_API}/${tv?.poster_path}`} alt="" />
         </div>
         <div className="movie-content">
           <div className="top">
-            <h1>{movie?.title || movie?.original_title}</h1>
-            <h4>{movie?.tagline}</h4>
+            <h1>{tv?.name || tv?.original_name}</h1>
+            <h4>{tv?.tagline}</h4>
             <div>
               <div>
                 <img src={imdbLogo} alt="imdb_logo" />
-                <p>{movie?.vote_average.toFixed(2)}/10</p>
+                <p>{tv?.vote_average.toFixed(2)}/10</p>
               </div>
 
               <div>
                 <img src={tomatoLogo} alt="tomato_logo" />
-                <p>{movie?.vote_count}</p>
-              </div>
-
-              <div>
-                <img src={coinLogo} alt="coin_logo" width="20px" />
-                <p>{formatMoney(movie?.budget!)}$</p>
+                <p>{tv?.vote_count}</p>
               </div>
             </div>
           </div>
           <div className="bottom">
             <h2>Overview</h2>
-            <p className="overview">{movie?.overview}</p>
+            <p className="overview">{tv?.overview}</p>
             <h2>Production Companies</h2>
             <div className="companies">
-              {movie?.production_companies
+              {tv?.production_companies
                 .filter((company) => company.logo_path !== null)
                 .map((company) => (
                   <img src={`${TMDB_V3_IMAGE_API}/${company.logo_path}`} />
@@ -100,32 +97,26 @@ const TvDetails: React.FC = () => {
             <div className="infos">
               <p>
                 <span>Category:</span>{" "}
-                {movie?.genres.flatMap((item) => item.name).join(", ")} people
+                {tv?.genres.flatMap((item) => item.name).join(", ")} people
               </p>
               <p>
                 <span>Production Countries:</span>{" "}
-                {movie?.production_countries
+                {tv?.production_countries
                   .flatMap((item) => item.name)
                   .join(", ")}
               </p>
               <p>
                 <span>Popularity:</span>{" "}
-                {movie?.popularity.toString().replace(".", "")} people
+                {tv?.popularity.toString().replace(".", "")} people
               </p>
               <p>
-                <span>Release Date:</span> {movie?.release_date}
+                <span>Release Date:</span> {tv?.first_air_date}
               </p>
               <p>
-                <span>Revenue:</span> {formatMoney(movie?.revenue!)}$
+                <span>Status:</span> {tv?.status}
               </p>
               <p>
-                <span>Budget:</span> {formatMoney(movie?.budget!)}$
-              </p>
-              <p>
-                <span>Status:</span> {movie?.status}
-              </p>
-              <p>
-                <span>Adult:</span> {movie?.adult ? "yes" : "no"}
+                <span>Adult:</span> {tv?.adult ? "yes" : "no"}
               </p>
             </div>
             <h2>Trailers</h2>
@@ -142,7 +133,7 @@ const TvDetails: React.FC = () => {
               ))}
             </div>
             <ActorsRow credits={credits!} />
-            <SimilarMovies movieId={movie?.id!} />
+            <SimilarMovies movieId={tv?.id!} />
           </div>
         </div>
         {trailer && (
