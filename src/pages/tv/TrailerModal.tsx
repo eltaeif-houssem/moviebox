@@ -1,9 +1,9 @@
-import { IMovieTrailer } from "@/interfaces/movie.interface";
+import { ITvTrailer } from "@/interfaces/tv.interface";
 import React from "react";
 import YouTube, { YouTubeProps } from "react-youtube";
 
 interface Props {
-  trailer: IMovieTrailer | null;
+  trailer: ITvTrailer | null;
   onClose: () => void;
 }
 
