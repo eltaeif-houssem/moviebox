@@ -67,5 +67,3 @@ If you have any questions, feel free to reach out:
 - Eltaeif Houssem
 - Email: eltaeif.houssem@gmail.com
 - Linkedin: https://www.linkedin.com/in/eltaeif-houssem
-
-You can copy this code into your `README.md` file and customize it where necessary (e.g., adding your GitHub username, live demo link, etc.). Let me know if you need further tweaks!
