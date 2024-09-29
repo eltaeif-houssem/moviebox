@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Layout from "@components/layout";
 import { appContext } from "@context/index";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import * as routePaths from "@constants/routePaths.contant";
 import "@styles/pages/saves/saves.css";
 import TextfieldSearch from "@/components/textfields/TextfieldSearch";
@@ -21,6 +21,7 @@ interface IFilter {
 
 const Saves: React.FC = () => {
   const context = appContext();
+  const navigate = useNavigate();
   const [genres, setGenres] = useState<IGenre[]>([]);
   const [filters, setFilters] = useState<IFilter>({
     search: "",
@@ -86,6 +87,14 @@ const Saves: React.FC = () => {
       state.filter((item) => item.id !== itemExist?.id)
     );
     await saveService.unSaveItem(`${itemExist?.id}`);
+  };
+
+  const navigateHandler = (id: number, type: string) => {
+    if (type === "movie") {
+      navigate(`/movies/${id}`);
+    } else {
+      navigate(`/tvs/${id}`);
+    }
   };
 
   return (
@@ -179,7 +188,12 @@ const Saves: React.FC = () => {
                     />
                   )}
                 </div>
-                <div className="movie-item-content">
+                <div
+                  className="movie-item-content"
+                  onClick={() =>
+                    navigateHandler(Number(item.itemId), item.type)
+                  }
+                >
                   <p>
                     {item.language} , {item.date}
                   </p>
