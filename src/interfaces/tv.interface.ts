@@ -121,7 +121,7 @@ export interface ITvImages {
   posters: ITvImage[];
 }
 
-interface ITvTrailer {
+export interface ITvTrailer {
   iso_639_1: string;
   iso_3166_1: string;
   name: string;
@@ -202,4 +202,22 @@ interface ITvVideo {
 export interface ITvVideoList {
   id: number;
   results: ITvVideo[];
+}
+
+interface ITvCredit {
+  id: number;
+  adult: boolean;
+  gender: number;
+  known_for_department: string;
+  name: string;
+  original_name: string;
+  popularity: number;
+  profile_path: string;
+  character: string;
+}
+
+export interface ITvCredits {
+  id: number;
+  cast: ITvCredit[];
+  crew: ITvCredit[];
 }

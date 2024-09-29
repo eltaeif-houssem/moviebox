@@ -10,6 +10,7 @@ import {
   ITvEpisode,
   ITvSeason,
   ITvVideoList,
+  ITvCredits,
 } from "@interfaces/tv.interface";
 
 /**
@@ -243,3 +244,15 @@ export const getEpisodeImages = async (
   axios.get(
     `/tv/${tvId}/season/${seasonNumber}/episode/${episodeNumber}/images`
   );
+
+/**
+ * @GET tv credits
+ * @param tvId: tvId
+ * @param page: number
+ * @returns {AxiosResponse<ITvCredits>} object
+ */
+export const getTvCredits = async (
+  tvId: number,
+  page: number = 1
+): Promise<AxiosResponse<ITvCredits>> =>
+  axios.get(`/tv/${tvId}/credits?page=${page}`);

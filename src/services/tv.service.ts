@@ -8,6 +8,7 @@ import {
   ITvVideoList,
   ITvSeason,
   ITvEpisode,
+  ITvCredits,
 } from "../interfaces/tv.interface";
 import * as tvApi from "@apis/tv.api";
 
@@ -252,6 +253,16 @@ class TvService {
     } catch (error) {
       console.error(error);
       return {} as ITvImages;
+    }
+  }
+
+  async fetchTvCredits(tvId: number, page: number = 1): Promise<ITvCredits> {
+    try {
+      const { data } = await tvApi.getTvCredits(tvId, page);
+      return data;
+    } catch (error) {
+      console.error(error);
+      return {} as ITvCredits;
     }
   }
 }

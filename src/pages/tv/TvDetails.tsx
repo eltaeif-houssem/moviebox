@@ -2,31 +2,27 @@ import Layout from "@/components/layout";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "@styles/pages/movie/movieDetails.css";
-import movieService from "@/services/movie.service";
-import {
-  IMovieCredits,
-  IMovieDetails,
-  IMovieTrailer,
-  IMovieTrailerList,
-} from "@/interfaces/movie.interface";
 import { TMDB_V3_IMAGE_API } from "@constants/apiUrls.constant";
 import imdbLogo from "@assets/imdb.png";
 import tomatoLogo from "@assets/tomato.png";
-import coinLogo from "@assets/coin.png";
-import { formatMoney } from "@/utils/string.util";
 import InfiniteSpinner from "@/components/spinners/InfiniteSpinner";
 import TrailerModal from "./TrailerModal";
 import SimilarMovies from "@/components/rows/SimilarMovies";
 import ActorsRow from "@/components/rows/ActorsRow";
 import tvService from "@/services/tv.service";
-import { ITvDetails } from "@/interfaces/tv.interface";
+import {
+  ITvCredits,
+  ITvDetails,
+  ITvTrailer,
+  ITvTrailerList,
+} from "@/interfaces/tv.interface";
 
 const TvDetails: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(true);
   const [tv, setTv] = useState<ITvDetails>();
-  const [trailers, setTrailers] = useState<IMovieTrailerList>();
-  const [trailer, setTrailer] = useState<IMovieTrailer | null>(null);
-  const [credits, setCredits] = useState<IMovieCredits>();
+  const [trailers, setTrailers] = useState<ITvTrailerList>();
+  const [trailer, setTrailer] = useState<ITvTrailer | null>(null);
+  const [credits, setCredits] = useState<ITvCredits>();
   const { id } = useParams();
 
   useEffect(() => {
@@ -34,13 +30,14 @@ const TvDetails: React.FC = () => {
       if (!loading) {
         setLoading(true);
       }
-      const movieDetails = await tvService.fetchTvDetails(Number(id));
-      const movieTrailers = await tvService.fetchTvTrailers(Number(id));
-      const movieCredits = await movieService.fetchMovieCredits(Number(id));
 
-      setCredits(movieCredits);
-      setTv(movieDetails);
-      setTrailers(movieTrailers);
+      const tvDetails = await tvService.fetchTvDetails(Number(id));
+      const tvTrailers = await tvService.fetchTvTrailers(Number(id));
+      const tvCredits = await tvService.fetchTvCredits(Number(id));
+
+      setCredits(tvCredits);
+      setTv(tvDetails);
+      setTrailers(tvTrailers);
       setLoading(false);
     };
 
