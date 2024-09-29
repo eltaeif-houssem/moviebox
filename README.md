@@ -60,24 +60,6 @@ Welcome to the **Moviebox Streaming Web App**! This project is a movie streaming
 
 - yarn run dev & the app will start running locally on http://localhost:3000.
 
-├── public
-├── src
-│ ├── apis # all the necessary api's
-│ ├── assets # all the needed assets
-│ ├── components # all the reusable components
-│ ├── configs # the configs needed to run the app
-│ ├── constants # all the constants of the app
-│ ├── context # contains the different contexts of the app
-│ ├── interfaces # contains all the interfaces of the app
-│ ├── pages # all the app pages
-│ ├── routes # all the app routes
-│ ├── services # all the app services
-│ ├── styles # all the app styles
-│ ├── utils # all the app utils
-│ ├── App.tsx # Main App component
-│ └── main.tsx # Entry point
-└── .env # Environment variables
-
 ### Contact
 
 If you have any questions, feel free to reach out:
