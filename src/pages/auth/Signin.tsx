@@ -10,6 +10,8 @@ import { appContext } from "@/context";
 import * as routePaths from "@constants/routePaths.contant";
 import Layout from "@/components/layout";
 
+const { VITE_APP_GUEST_USER_EMAIL, VITE_APP_GUEST_USER_PASSWORD } = import.meta
+  .env;
 interface ISigninForm {
   email: string;
   password: string;
@@ -31,8 +33,8 @@ const Signin: React.FC = () => {
   };
 
   const joinAsGuest = () => {
-    setValue("email", "guestuser@email.com");
-    setValue("password", "Q+Rdv;E=.vptEO=%YmUK-M,qM4A(");
+    setValue("email", `${VITE_APP_GUEST_USER_EMAIL}`);
+    setValue("password", `${VITE_APP_GUEST_USER_PASSWORD}`);
     handleSubmit(onSubmit)();
   };
 
