@@ -108,18 +108,29 @@
   color: #891b36;
 }
 
-.saves-page > .right-side > .movie-item > div:nth-child(4) {
+.saves-page > .right-side > .movie-item > .movie-item-content > div {
   margin-top: 5px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  transition: 0.2s ease-in;
 }
 
-.saves-page > .right-side > .movie-item > div:nth-child(4) > div {
+.saves-page > .right-side > .movie-item > .movie-item-content:hover {
+  color: #891b36;
+}
+
+.saves-page > .right-side > .movie-item > .movie-item-content > div > div {
   display: flex;
   align-items: center;
 }
 
-.saves-page > .right-side > .movie-item > div:nth-child(4) > div > img {
+.saves-page
+  > .right-side
+  > .movie-item
+  > .movie-item-content
+  > div
+  > div
+  > img {
   margin-right: 5px;
 }

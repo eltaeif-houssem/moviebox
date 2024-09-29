@@ -179,21 +179,23 @@ const Saves: React.FC = () => {
                     />
                   )}
                 </div>
-                <p>
-                  {item.language} , {item.date}
-                </p>
-                <h4>{item.title}</h4>
-                <div className="movie-item-rating">
-                  <div>
-                    <img src={imdbLogo} alt="IMDb" />
-                    {item.vote_average.toFixed(2)}/10
+                <div className="movie-item-content">
+                  <p>
+                    {item.language} , {item.date}
+                  </p>
+                  <h4>{item.title}</h4>
+                  <div className="movie-item-rating">
+                    <div>
+                      <img src={imdbLogo} alt="IMDb" />
+                      {item.vote_average.toFixed(2)}/10
+                    </div>
+                    <div>
+                      <img src={tomatoLogo} alt="Tomato" />
+                      {item.vote_count}
+                    </div>
                   </div>
-                  <div>
-                    <img src={tomatoLogo} alt="Tomato" />
-                    {item.vote_count}
-                  </div>
+                  <p>{item.genre}</p>
                 </div>
-                <p>{item.genre}</p>
               </div>
             ))}
         </div>
